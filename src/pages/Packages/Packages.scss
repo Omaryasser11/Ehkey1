@@ -1,0 +1,29 @@
+.bookSession {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+.bookSession .H2 {
+    font-weight: 600;
+
+}
+
+.bookSession .Line {
+    height: 2px;
+}
+
+.mainL {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+}

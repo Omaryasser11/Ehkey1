@@ -1,0 +1,149 @@
+.appointment-booking {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: solid 1px #25634c;
+  padding: 1rem;
+  border-radius: 1rem 1rem 0 0;
+  margin-bottom: .5rem;
+  color: white;
+  background-color: whitesmoke;
+
+  h2 {
+    text-align: center;
+  }
+
+  .date-picker {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+
+    label {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #25634c;
+    }
+
+  }
+
+
+
+  .time-slots .lineo {
+    width: 35%;
+    margin: 0;
+    margin-top: .35rem;
+  }
+
+  .confirmation {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 20px;
+
+    p {
+      margin: 5px 0;
+    }
+  }
+}
+
+.appointment-booking .date-picker input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #25634c;
+  border-radius: 4px;
+  background-color: whitesmoke;
+  color: #25634c;
+}
+
+.appointment-booking-L {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: solid 1px #25634c;
+  padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
+  color: #25634c;
+  background-color: whitesmoke;
+  gap: 1em;
+}
+
+.appointment-booking-M {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: solid 1px #25634c;
+  padding: 1rem;
+  border-radius: 0 0;
+  color: #25634c;
+  background-color: whitesmoke;
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #25634c;
+  }
+}
+
+
+
+.appointment-booking-M ul {
+  list-style: none;
+  padding: 0;
+
+  #LI {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+    &.selected {
+      background-color:#25634c;
+      color: #fff;
+    }
+  }
+}
+
+.maino {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+
+.maino .appointment-booking-L .P {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #25634c;
+
+}
+.maino .appointment-booking-L .p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #25634c;
+
+}

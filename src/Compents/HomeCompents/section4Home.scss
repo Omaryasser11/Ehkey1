@@ -1,0 +1,110 @@
+.section10 {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    background-color: whitesmoke;
+    padding-top: 3rem;
+}
+
+.main2 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    height: 50%;
+}
+
+.one {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        width: 100%;
+        font-family: 'Exo 2', sans-serif;
+        font-size: 36.6px;
+        font-weight: 700;
+        letter-spacing: normal;
+        text-align: center;
+        color: #25634Cff;
+    }
+
+    p {
+        max-width: 80%;
+        font-family: 'Exo 2', sans-serif;
+        font-size: 15.6px;
+        font-weight: 600;
+        letter-spacing: normal;
+        color: #25634Cff;
+        margin: 0;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+}
+
+.two {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem 0 3rem 0;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: center;
+        height: auto;
+        margin: 0 .75rem;
+        padding: 2rem;
+
+        p {
+            color: #25634Cff;
+            font-weight: 700;
+        }
+
+        span {
+            text-align: center
+        }
+    }
+
+    img {
+        height: 20vh;
+        width: 20vh;
+        margin-top: -6.5rem
+    }
+
+    ;
+}
+
+.b11:hover {
+    transition: 0.7s ease;
+    background-color: #25634Cff;
+    // transform: translateX(50px); /* Adjust the distance as needed */
+    color: white;
+}
+
+// .hover-.b11 {
+
+
+// }
+
+// .hover-.b11:hover {
+
+// }

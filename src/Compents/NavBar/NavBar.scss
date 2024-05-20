@@ -1,0 +1,58 @@
+.NavBar1 {
+    display: flex;
+    background-color: #25634c;
+    height: auto;
+    margin: 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+
+
+
+}
+
+.Lift {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+}
+
+.Icon {
+
+    height: 100%;
+    width: 13%;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+}
+
+.Links {
+    a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+        margin: 0 10px;
+        font-weight: 500;
+    }
+}

@@ -1,0 +1,121 @@
+.MyAccount {
+    margin-top: 4rem;
+    padding: 1rem;
+}
+
+.MyAccount h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.MainInfo3 {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.Lefto {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1em;
+}
+
+.Mbtn {
+    font-size: 1.20rem;
+    padding: .4rem;
+    background-color: #25634c;
+    color: white;
+    font-weight: 600;
+}
+
+.Mbtn:hover {
+    background-color: white;
+    color: #25634c;
+}
+
+.clicked {
+    background-color: #06291c;
+}
+.clicked3 {
+    background-color: red;
+}
+.clicked:hover {
+    background-color: white;
+    color: #06291c;
+
+}
+
+
+.MbtnR {
+    font-size: 1.20rem;
+    padding: .4rem;
+    background-color: #25634c;
+    color: white;
+    font-weight: 600;
+}
+
+.MbtnR:hover {
+    background-color:  red;
+    color: white
+}
+
+.clicked3:hover {
+    background-color: white;
+    color: red;
+}
+/* src/components/UserProfile.css */
+
+.user-profile {
+
+
+  }
+  
+  .user-profile h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-profile table {
+
+    border-collapse: collapse;
+  }
+  
+  .user-profile table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .user-profile input,
+  .user-profile textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .user-profile button {
+    width: 70%;
+    display: block;
+    padding: 5px;
+    background-color:#25634c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .user-profile button:hover {
+    background-color:#7caf9c;
+  }
+  
+  .mainAcc {
+    padding: 2rem 1rem;
+}

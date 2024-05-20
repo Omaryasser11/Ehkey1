@@ -1,0 +1,267 @@
+.cart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    margin-top: 5rem;
+}
+
+.Mycart {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 65%;
+}
+
+.Mycart {
+    .cart-table {
+        width: 90%;
+        border-collapse: collapse;
+
+        th,
+        td {
+            // border: 1.5px solid #05482e;
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+
+        }
+
+        td {
+            color: #05482e;
+            font-weight: 600;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #9ebbb0;
+        }
+
+        .iName {
+            width: 15%;
+            text-align: left;
+            color: #05482e;
+            font-weight: 600;
+        }
+
+        .iPrice {
+            width: 7%;
+            text-align: left;
+        }
+
+        .iTotal {
+            width: 10%;
+            text-align: left;
+        }
+
+        .iRemove {
+            text-align: center;
+            width: 10%;
+        }
+
+        .iDetails {
+            text-align: center;
+            width: 40%;
+        }
+
+        .iQuantity {
+            width: 20%;
+            text-align: center;
+
+            .Action {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: center;
+                justify-content: space-around;
+                align-items: center;
+                padding: 0 2rem;
+
+            }
+
+            .btnPlus {
+                height: 2rem;
+                width: 2rem;
+                background-color: #05482e;
+                color: white;
+                text-align: center;
+                border-radius: 1rem;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .btnPlus:hover {
+                background-color: white;
+                color: black;
+                border: solid 2px #05482e;
+                transition: .9s;
+            }
+
+
+        }
+    }
+}
+
+.cart-table tr .Font {
+    color: #02311f;
+
+}
+
+.Icon122 {
+
+    font-size: 1.5rem;
+    color: #05482e;
+}
+
+.Icon122:hover {
+    color: red;
+    transition: .4s;
+}
+
+
+
+.Item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+    width: 95%;
+}
+
+.Mycart .Item p {
+    font-family: "Exo 2", sans-serif;
+    font-size: 14.6px;
+    /* font-weight: 600; */
+    letter-spacing: normal;
+    color: #25634c;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.cart-table {
+    width: 95%;
+}
+
+.TitleCart {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1rem;
+
+
+}
+
+.lineo {
+    height: 1px;
+    background-color: #25634c;
+    margin: 1rem 0;
+    width: 95%;
+}
+
+
+.OrderSummary {
+    display: flex;
+    background-color: #02311f;
+    padding: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    padding: 1rem;
+
+    .titlee {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: white;
+    }
+}
+
+
+.Summary {
+    // border-collapse: collapse;
+    border: 2px solid #ddd;
+    margin: .5rem 0;
+}
+
+.Summary .Summaryborder {
+    // border: 1.5px solid #05482e;
+    padding: 8px;
+    text-align: center;
+    text-align: left;
+    border-right: 1px solid #ddd;
+    background-color: whitesmoke;
+    color: #02311f;
+
+}
+
+.Summary .TD {
+    text-align: center;
+    padding: 8px;
+    text-align: center;
+    background-color: whitesmoke;
+    color: #02311f;
+}
+
+.Checkout {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 0 .3rem;
+
+
+}
+
+.Checkout .A {
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.isEmpty {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tito {
+    color: #57c06d;
+}
+
+.imgEmpty {
+    height: 45vh;
+}

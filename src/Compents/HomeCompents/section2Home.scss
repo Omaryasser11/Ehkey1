@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+.section2 {
+  display: flex;
+  background-color: whitesmoke;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+margin-top: 1rem;
+
+  h1 {
+    font-size: 1.5rem;
+    color: #572c96;
+    margin: 2rem 0;
+    margin-top: 1rem;
+  }
+
+  .Cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .card {
+    background-color: transparent;
+    border: none;
+
+    p {
+      color: #572c96;
+      margin: 0;
+      max-width: 125px;
+      font-size: 14px;
+      margin-top: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+  }
+}
+
+.IMgDElivery {
+  height: 67px;
+  width: 71px;
+  /* border-radius: 50px; */
+  SCALE: 1.25;
+  MARGIN: 0 3rem 0 2rem;
+
+}
+
+.trackContier {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 1rem 0 0.5rem 0;
+
+  img {
+    width: 50px;
+    height: 50px;
+
+  }
+
+  p {
+    margin: 0;
+    margin-top: 0.5rem;
+    margin-left: -3rem;
+    font-size: 25px;
+    font-weight: 500;
+    color: #3b0f55;
+    font-family: "Bebas Neue", sans-serif;
+  }
+}
+
+#Tracking {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  .TrackBtn {
+    width: 6rem;
+    height: 31.25px;
+    border: solid 1px;
+    border-radius: 0 4px 4px 0;
+    margin-left: 2px;
+    background-color: #3b0f55;
+    color: white;
+
+  }
+
+  .TrackBtn:hover {
+
+    background-color: #ffd65b;
+    color: #3b0f55;
+
+    transition: 1s;
+  }
+}
+
+.inputTrack[type=text],
+select {
+  width: 66%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  box-sizing: border-box;
+  height: 30.25px;
+  padding: '8px'
+}
+
+input:focus {
+
+  box-shadow: #3b0f55 0 0 3px 2px;
+  outline: none;
+}
+
+
+
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: #3b0f55
+  }
+
+  ;
+}
+
+.Boxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+
+  .box {
+    height: 120px;
+    width: 158px;
+    // margin: 0 10px 0 5px;
+    background-color: #fcfdfc;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+
+    span {
+      font-family: 'Oswald', sans-serif;
+    }
+  }
+
+  .bowMiddle {
+    background-color: whitesmoke;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+
+  .clicked {
+    background-color: #25634Cff;
+    height: 150px;
+    width: 165px;
+    color: white;
+
+    .BoxIcon {
+      font-size: 3rem;
+    }
+  }
+}
+
+
+
+.iconInput {
+  padding: 4px;
+  position: absolute;
+  box-sizing: border-box;
+  top: 50%;
+  left: 130px;
+  transform: translateY(-50%);
+  color: #3b0f55;
+
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputCalc,
+select {
+
+  box-sizing: border-box;
+  padding-left: 1.5rem;
+  box-sizing: border-box;
+  padding-left: 1.5rem;
+  height: 2rem;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
+  border-radius: soild;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+.calc {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.calcButtuon {
+  width: 6rem;
+  height: 31.25px;
+  border: solid 1px;
+  border-radius: 4px;
+  margin-left: 2px;
+  background-color: #3b0f55;
+  color: white;
+}
+
+.calcButtuon:hover {
+  background-color: #ffd65b;
+  color: #3b0f55;
+  transition: 1s;
+}
+
+.inputCalc:focus {
+
+  box-shadow: #3b0f55 0 0 3px 2px;
+  outline: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  margin: 0 .75rem;
+  padding: 2rem;
+
+
+  p {
+    color: #25634Cff;
+    font-weight: 700;
+  }
+
+  span {
+    text-align: center
+  }
+
+  img {
+    height: 20vh;
+    width: 20vh;
+
+  }
+}
