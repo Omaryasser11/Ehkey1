@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import './AppointmentBooking.scss';
+import React, { useEffect, useState } from "react";
+import "./AppointmentBooking.scss";
+import useAvailableTimeSlots from "../../hooks/time-slots/useAvailableTimeSlots";
 
 const AppointmentBooking = () => {
-  const [selectedDate, setSelectedDate] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedSlot, setSelectedSlot] = useState();
   const [availableAppointments, setAvailableAppointments] = useState([]);
 
+  const { getAvailableTimeSlots, success, slots } = useAvailableTimeSlots();
+  const token = localStorage.getItem("authToken");
   ///////////////Date
   // Get the current date
   const today = new Date();
@@ -17,45 +20,78 @@ const AppointmentBooking = () => {
 
   // Add leading zero to day if needed
   if (dd < 10) {
-    dd = '0' + dd;
+    dd = "0" + dd;
   }
 
   // Add leading zero to month if needed
   if (mm < 10) {
-    mm = '0' + mm;
+    mm = "0" + mm;
   }
 
   // Format the date as yyyy-mm-dd
   const formattedDate = `${yyyy}-${mm}-${dd}`;
 
-  ////////////////////////////////////////////////////
-  // Function to handle selecting a date
   const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-    // Here you would typically fetch available appointments for the selected date
-    // and update the availableAppointments state accordingly
-    // For simplicity, I'll just set some dummy data here
-    setAvailableAppointments([
-      { time: '09:00 AM', id: 1 },
-      { time: '10:00 AM', id: 2 },
-      { time: '11:00 AM', id: 3 },
-    ]);
-    setSelectedTime(''); // Clear selected time when date changes
+    const newDate = event.target.value;
+    setSelectedDate(newDate);
   };
 
-  // Function to handle selecting a time
-  const handleTimeChange = (time) => {
-    setSelectedTime(time);
+  useEffect(() => {
+    if (selectedDate) {
+      getAvailableTimeSlots({ date: selectedDate, timezone: "UTC" }, token);
+      setSelectedSlot("");
+    }
+  }, [selectedDate]);
+  useEffect(() => {
+    console.log("selectedSlot", selectedSlot);
+  }, [selectedSlot]);
+  useEffect(() => {
+    setAvailableAppointments(slots);
+  }, [slots]);
+
+  const handleSelectSlot = (slotId) => {
+    setSelectedSlot(slots.find((slot) => slot.id === slotId));
+    console.log(
+      "slots.find",
+      slots.find((slot) => slot.id === slotId)
+    );
   };
+  function convertTo12HourFormat(time24) {
+    // Split the time into hours, minutes, and seconds
+    const [hours, minutes, seconds] = time24.split(":").map(Number);
+
+    // Determine if the time is AM or PM
+    const period = hours >= 12 ? "PM" : "AM";
+
+    // Convert hours from 24-hour to 12-hour format
+    const hours12 = hours % 12 || 12; // Convert '0' or '12' hours to '12'
+
+    // Pad minutes and seconds with leading zeros if needed
+    const paddedMinutes = String(minutes).padStart(2, "0");
+    const paddedSeconds = String(seconds).padStart(2, "0");
+
+    // Construct the 12-hour format time string
+    const time12 = `${hours12}:${paddedMinutes}:${paddedSeconds} ${period}`;
+
+    return time12;
+  }
 
   return (
     <>
-      <div className='maino flex col-9'>
+      <div className="maino flex col-9">
         <div className="appointment-booking col-12 ">
-
           <div className="date-picker flex col-9">
-            <label htmlFor="date" className='col-3'>Select Date</label>
-            <input className='col-7' type="date" id="date" min={formattedDate} value={selectedDate} onChange={handleDateChange} />
+            <label htmlFor="date" className="col-3">
+              Select Date
+            </label>
+            <input
+              className="col-7"
+              type="date"
+              id="date"
+              min={formattedDate}
+              value={selectedDate}
+              onChange={handleDateChange}
+            />
           </div>
         </div>
 
@@ -64,36 +100,40 @@ const AppointmentBooking = () => {
             <label>Available Time Slots:</label>
 
             <ul>
-              {availableAppointments.map(appointment => (
+              {availableAppointments.map((appointment) => (
                 <li
-                  id='LI'
+                  id="LI"
                   key={appointment.id}
-                  onClick={() => handleTimeChange(appointment.time)}
-                  className={selectedTime === appointment.time ? 'selected' : ''}
+                  onClick={() => handleSelectSlot(appointment.id)}
+                  className={
+                    selectedSlot === appointment.time ? "selected" : ""
+                  }
                 >
-                  {appointment.time}
+                  {convertTo12HourFormat(appointment.from)} -{" "}
+                  {convertTo12HourFormat(appointment.to)} ({appointment.day})
                 </li>
               ))}
             </ul>
           </div>
-
         </div>
-        {selectedTime && (
-
-          <div className='appointment-booking-L ' >
-            <p className='P col-12 flex'>You have selected the following appointment:</p>
-            <p className='p'>Date: {selectedDate}</p>
-            <p className='p'>Time: {selectedTime}</p>
-            {/* Add a button here to confirm the appointment */}
-            <div className='col-12 flex'>
-              <button className='Add col-3'>Confirm</button>
+        {selectedSlot && (
+          <div className="appointment-booking-L ">
+            <p className="P col-12 flex">
+              You have selected the following appointment:
+            </p>
+            <p className="p">Date: {selectedDate}</p>
+            <p className="p">Day: {selectedSlot.day}</p>
+            <p className="p">
+              Time: {convertTo12HourFormat(selectedSlot.from)}
+            </p>
+            <div className="col-12 flex">
+              <button className="Add col-3">Confirm</button>
             </div>
           </div>
         )}
       </div>
-
-
-    </>);
+    </>
+  );
 };
 
 export default AppointmentBooking;

@@ -22,13 +22,14 @@ class APIClient {
         },
       })
       .then((res) => res.data);
-  get = (_token, content_type = "") =>
+  get = (params = {}, _token = "", content_type = "") =>
     axiosInstance
       .get(this.endpoint, {
         headers: {
           Authorization: `Bearer ${_token}`,
           Content_type: content_type,
         },
+        params: params,
       })
       .then((res) => res.data);
   update = (data, _token) =>
