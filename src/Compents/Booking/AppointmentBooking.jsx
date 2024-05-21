@@ -9,7 +9,7 @@ const AppointmentBooking = () => {
   const [availableAppointments, setAvailableAppointments] = useState([]);
 
   const { getAvailableTimeSlots, success, slots } = useAvailableTimeSlots();
-  const { bookASession, error } = useBookASession();
+  const { bookASession, error, success: bookSuccess } = useBookASession();
   const token = localStorage.getItem("authToken");
 
   const today = new Date();
@@ -44,18 +44,11 @@ const AppointmentBooking = () => {
     }
   }, [selectedDate]);
   useEffect(() => {
-    console.log("selectedSlot", selectedSlot);
-  }, [selectedSlot]);
-  useEffect(() => {
     setAvailableAppointments(slots);
   }, [slots]);
 
   const handleSelectSlot = (slotId) => {
     setSelectedSlot(slots.find((slot) => slot.id === slotId));
-    console.log(
-      "slots.find",
-      slots.find((slot) => slot.id === slotId)
-    );
   };
   const handleConfirmABook = () => {
     const data = {
@@ -64,6 +57,9 @@ const AppointmentBooking = () => {
       timeZone: "UTC",
     };
     bookASession(data, token);
+    setSelectedDate("");
+    setSelectedSlot(null);
+    setAvailableAppointments([]);
   };
   function convertTo12HourFormat(time24) {
     const [hours, minutes, seconds] = time24.split(":").map(Number);
@@ -138,6 +134,14 @@ const AppointmentBooking = () => {
             style={{ fontSize: "12px", color: "red" }}
           >
             {error}
+          </p>
+        )}
+        {bookSuccess && (
+          <p
+            className="P col-12 flex"
+            style={{ fontSize: "12px", color: "green" }}
+          >
+            Session Booked Successfully
           </p>
         )}
       </div>
