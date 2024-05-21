@@ -22,6 +22,15 @@ class APIClient {
         },
       })
       .then((res) => res.data);
+  get = (_token, content_type = "") =>
+    axiosInstance
+      .get(this.endpoint, {
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          Content_type: content_type,
+        },
+      })
+      .then((res) => res.data);
 }
 
 export default APIClient;

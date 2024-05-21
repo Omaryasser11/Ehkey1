@@ -19,12 +19,20 @@ export default function Section1Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    submitContactForm(formData);
+    try {
+      await submitContactForm(formData);
+      setFormData({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Form submission failed", error);
+    }
   };
-
   return (
     <section className="col-12 section1Contact">
       <div className="container">
