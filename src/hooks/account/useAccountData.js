@@ -9,7 +9,7 @@ const useAccountData = () => {
   const [data, setData] = useState();
   const getAccountData = async (token) => {
     try {
-      const res = await apiClient.get(token);
+      const res = await apiClient.get({}, token);
       setSuccess(true);
       setError("");
 

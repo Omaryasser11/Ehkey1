@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AppointmentBooking.scss";
 import useAvailableTimeSlots from "../../hooks/time-slots/useAvailableTimeSlots";
+import useBookASession from "../../hooks/sessions/useBookASession";
 
 const AppointmentBooking = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -8,9 +9,9 @@ const AppointmentBooking = () => {
   const [availableAppointments, setAvailableAppointments] = useState([]);
 
   const { getAvailableTimeSlots, success, slots } = useAvailableTimeSlots();
+  const { bookASession, error } = useBookASession();
   const token = localStorage.getItem("authToken");
-  ///////////////Date
-  // Get the current date
+
   const today = new Date();
 
   // Get day, month, and year
@@ -56,23 +57,21 @@ const AppointmentBooking = () => {
       slots.find((slot) => slot.id === slotId)
     );
   };
+  const handleConfirmABook = () => {
+    const data = {
+      date: selectedDate,
+      timeSlotId: selectedSlot.id,
+      timeZone: "UTC",
+    };
+    bookASession(data, token);
+  };
   function convertTo12HourFormat(time24) {
-    // Split the time into hours, minutes, and seconds
     const [hours, minutes, seconds] = time24.split(":").map(Number);
-
-    // Determine if the time is AM or PM
     const period = hours >= 12 ? "PM" : "AM";
-
-    // Convert hours from 24-hour to 12-hour format
     const hours12 = hours % 12 || 12; // Convert '0' or '12' hours to '12'
-
-    // Pad minutes and seconds with leading zeros if needed
     const paddedMinutes = String(minutes).padStart(2, "0");
     const paddedSeconds = String(seconds).padStart(2, "0");
-
-    // Construct the 12-hour format time string
     const time12 = `${hours12}:${paddedMinutes}:${paddedSeconds} ${period}`;
-
     return time12;
   }
 
@@ -127,9 +126,19 @@ const AppointmentBooking = () => {
               Time: {convertTo12HourFormat(selectedSlot.from)}
             </p>
             <div className="col-12 flex">
-              <button className="Add col-3">Confirm</button>
+              <button onClick={handleConfirmABook} className="Add col-3">
+                Confirm
+              </button>
             </div>
           </div>
+        )}
+        {error !== "" && selectedSlot && (
+          <p
+            className="P col-12 flex"
+            style={{ fontSize: "12px", color: "red" }}
+          >
+            {error}
+          </p>
         )}
       </div>
     </>
