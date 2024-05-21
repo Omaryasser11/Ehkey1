@@ -4,9 +4,11 @@ import { useAuth } from "../../store/auth";
 import axios from "axios";
 import "./MyAccount.scss";
 import useAccountData from "../../hooks/account/useAccountData";
+import useUpdateAccount from "../../hooks/account/useUpdateAccount";
 
 export default function MyAccount() {
-  const { data, success, error, getAccountData } = useAccountData();
+  const { data, getAccountData } = useAccountData();
+  const { success, error, updateAccount } = useUpdateAccount();
   const [user, setUser] = useState({
     id: "",
     name: "",
@@ -25,11 +27,13 @@ export default function MyAccount() {
   const token = localStorage.getItem("authToken");
 
   useEffect(() => {
-    getAccountData(token);
-  }, [token, getAccountData]);
+    if (token) {
+      getAccountData(token);
+    }
+  }, [token]);
 
   useEffect(() => {
-    if (data) {
+    if (data && !isEditing) {
       const [firstName, lastName] = data.name.split(" ");
       setUser({ ...data, firstName, lastName });
     }
@@ -57,25 +61,9 @@ export default function MyAccount() {
         phone: user.phone,
         country: user.country,
       };
+      updateAccount(requestBody, token);
 
-      const response = await axios.put(
-        "https://www.ehkey.com/api/account",
-        requestBody,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        const updatedUserData = response.data;
-        setUser(updatedUserData);
-        setIsEditing(false);
-      } else {
-        console.error("Failed to save user data:", response.statusText);
-      }
+      setIsEditing(false);
     } catch (error) {
       if (error.response && error.response.status === 400) {
         console.error("Bad Request:", error.response.data);

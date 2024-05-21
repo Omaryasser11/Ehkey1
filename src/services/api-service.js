@@ -31,6 +31,12 @@ class APIClient {
         },
       })
       .then((res) => res.data);
+  update = (data, _token) =>
+    axiosInstance
+      .put(this.endpoint, data, {
+        headers: { Authorization: `Bearer ${_token}` },
+      })
+      .then((res) => res.data);
 }
 
 export default APIClient;
