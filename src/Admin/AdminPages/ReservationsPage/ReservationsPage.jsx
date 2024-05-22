@@ -1,63 +1,83 @@
-import React, { useState, useEffect } from 'react';
-import './ReservationsPage.scss'; // Import SCSS file for styling
+import React, { useState, useEffect } from "react";
+import "./ReservationsPage.scss"; // Import SCSS file for styling
+import useGetReservations from "../../../hooks/admin/reservation/useGetReservations";
 
 const ReservationsPage = () => {
-    const [reservations, setReservations] = useState([]);
+  const {
+    success,
+    error,
+    getReservations,
+    data: reservations,
+    totalPages,
+  } = useGetReservations();
 
-    useEffect(() => {
-        // Fetch reservations from the backend when the component mounts
-        fetchReservations();
-    }, []);
+  const [currentPage, setCurrentPage] = useState(1);
+  const token = localStorage.getItem("authToken");
 
-    const fetchReservations = () => {
-        // Simulated reservations data
-        const dummyReservations = [
-            {
-                id: 1,
-                userName: 'John Doe',
-                email: 'john@example.com',
-                reservedTime: new Date('2024-05-05T10:00:00') // Example reservation time
-            },
-            {
-                id: 2,
-                userName: 'Jane Smith',
-                email: 'jane@example.com',
-                reservedTime: new Date('2024-05-05T11:00:00') // Example reservation time
-            },
-            {
-                id: 3,
-                userName: 'Alice Johnson',
-                email: 'alice@example.com',
-                reservedTime: new Date('2024-05-05T12:00:00') // Example reservation time
-            }
-        ];
-
-        setReservations(dummyReservations);
+  useEffect(() => {
+    const fetchReservations = async () => {
+      const response = await getReservations(token, currentPage);
     };
 
-    return (
-        <div className="reservations-page mainPage">
-            <h1>Reservations</h1>
-            <table className="reservation-table">
-                <thead>
-                    <tr>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Reserved Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {reservations.map(reservation => (
-                        <tr key={reservation.id}>
-                            <td>{reservation.userName}</td>
-                            <td>{reservation.email}</td>
-                            <td>{reservation.reservedTime.toLocaleString()}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+    fetchReservations();
+  }, [currentPage]);
+
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleString();
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  return (
+    <div className="reservations-page mainPage">
+      <h1>Reservations</h1>
+      <table className="reservation-table">
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Reserved Time</th>
+            <th>End Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {reservations.length > 0 &&
+            reservations.map((reservation) => (
+              <tr key={reservation.id}>
+                <td>{reservation.user.name}</td>
+                <td>{reservation.user.email}</td>
+                <td>{formatDate(reservation.startDateTime)}</td>
+                <td>{formatDate(reservation.endDateTime)}</td>
+                <td>{reservation.status}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default ReservationsPage;

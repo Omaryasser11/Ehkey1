@@ -1,5 +1,5 @@
 import { Route, BrowserRouter, Routes, Outlet } from "react-router-dom";
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot } from "recoil";
 import HomePage from "./pages/HomePage/HomePage";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import AboutUs from "./pages/AboutUS/AboutUS";
@@ -36,14 +36,12 @@ import BasicInfoPage from "./Compents/MyAccountCompents/BasicInfoPage/BasicInfoP
 import { AuthProvider } from "./store/auth";
 import RequireAuth from "./store/RequireAuth";
 import ProductPage from "./pages/Products/ProudactPage";
-import CARTO from "./pages/Products/CART/cartPage"
+import CARTO from "./pages/Products/CART/cartPage";
 function App() {
   return (
     <RecoilRoot>
       <div className="App">
-
         <AuthProvider>
-
           <BrowserRouter>
             <Routes>
               <Route
@@ -56,12 +54,18 @@ function App() {
                   </>
                 }
               >
-
                 <Route index element={<HomePage />} />
                 <Route path="ContactUs" element={<ContactUs />} />
                 <Route path="AboutUs" element={<AboutUs />} />
                 <Route path="Cart" element={<Cart />} />
-                <Route path="MyAccount" element={<RequireAuth> <MyAccount /> </RequireAuth>} />
+                <Route
+                  path="MyAccount"
+                  element={
+                    <RequireAuth>
+                      <MyAccount />
+                    </RequireAuth>
+                  }
+                />
                 <Route path="Packages" element={<Packages />} />
                 <Route path="Services" element={<Services />} />
                 <Route path="PolicyAndPrivacy" element={<PolicyAndPrivacy />} />
@@ -77,12 +81,9 @@ function App() {
               <Route path="EnterOTP" element={<OTP />} />
               <Route path="Basic" element={<BasicInfoPage />} />
               <Route path="Product" element={<ProductPage />} />
-          
             </Routes>
           </BrowserRouter>
-
         </AuthProvider>
-
       </div>
     </RecoilRoot>
   );
@@ -95,8 +96,7 @@ function NoNavBarFooterRoutes() {
       <div className="Main">
         <TopBar />
         <Routes>
-          <Route index element={<HomeAdmin />}
-          />
+          <Route index element={<HomeAdmin />} />
           {/* Add Admin2 route here */}
           <Route path="H1" element={<Page2 />} />
           <Route path="H2" element={<P2 />} />
@@ -105,9 +105,8 @@ function NoNavBarFooterRoutes() {
 
           {/* <Route index element={<HomeAdmin />} /> */}
         </Routes>
-
       </div>
-    </div >
+    </div>
   );
 }
 function NoNavBarFooterRoutes2() {
@@ -117,8 +116,7 @@ function NoNavBarFooterRoutes2() {
       <div className="Main2">
         <TopBar />
         <Routes>
-          <Route index element={<HomeAdmin />}
-          />
+          <Route index element={<HomeAdmin />} />
           {/* Add Admin2 route here */}
           <Route path="H1" element={<Super />} />
           <Route path="H2" element={<P2 />} />
@@ -135,9 +133,8 @@ function NoNavBarFooterRoutes2() {
 
           {/* <Route index element={<HomeAdmin />} /> */}
         </Routes>
-
       </div>
-    </div >
+    </div>
   );
 }
 

@@ -1,70 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Assuming you're using Axios for HTTP requests
-import './MessagePage.scss'; // Import the SCSS file
-
-
+import React, { useState, useEffect } from "react";
+import "./MessagePage.scss";
+import useContactMessages from "../../../hooks/admin/contact/useContactMessages";
 
 const MessagePage = () => {
-    const [contactRequests, setContactRequests] = useState([]);
+  const [contactRequests, setContactRequests] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { getContactMessages, data, totalPages } = useContactMessages();
+  const token = localStorage.getItem("authToken");
 
-    useEffect(() => {
-        // Fetch contact requests from the backend when the component mounts
-        fetchContactRequests();
-    }, []);
+  useEffect(() => {
+    getContactMessages(token, currentPage);
+  }, [currentPage]);
 
-    const fetchContactRequests = async () => {
-        try {
-            // Make a GET request to fetch contact requests
-            // const response = await axios.get('/api/contact-requests'); // Adjust URL as per your backend
-            setContactRequests(dummyData); // Assuming the response contains an array of contact requests
-        } catch (error) {
-            console.error('Error fetching contact requests:', error);
-        }
-    };
-    const dummyData = [
-        {
-            id: 1,
-            name: 'John Doe',
-            email: 'john@example.com',
-            message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        },
-        {
-            id: 2,
-            name: 'Jane Smith',
-            email: 'jane@example.com',
-            message: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        },
-        {
-            id: 3,
-            name: 'Alice Johnson',
-            email: 'alice@example.com',
-            message: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-        }
-    ];
+  useEffect(() => {
+    if (data) {
+      setContactRequests(data);
+    }
+  }, [data]);
 
-    return (
-        <div className="message-page mainPage col-12">
-            <h1>Contact Requests</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Message</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {contactRequests.map(request => (
-                        <tr key={request.id}>
-                            <td>{request.name}</td>
-                            <td>{request.email}</td>
-                            <td>{request.message}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  return (
+    <div className="message-page mainPage col-12">
+      <h1>Contact Requests</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {contactRequests.length > 0 &&
+            contactRequests.map((request) => (
+              <tr key={request.id}>
+                <td>{request.name}</td>
+                <td>{request.email}</td>
+                <td>{request.message}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default MessagePage;
