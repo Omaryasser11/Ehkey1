@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./MessagePage.scss";
 import useContactMessages from "../../../hooks/admin/contact/useContactMessages";
+import Pagination from "../../CompentsAdmin/Pagination/Pagination";
 
 const MessagePage = () => {
   const [contactRequests, setContactRequests] = useState([]);
@@ -18,16 +19,8 @@ const MessagePage = () => {
     }
   }, [data]);
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -54,17 +47,11 @@ const MessagePage = () => {
             ))}
         </tbody>
       </table>
-      <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

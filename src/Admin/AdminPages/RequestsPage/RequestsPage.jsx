@@ -1,74 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import './RequestsPage.scss'; // Import SCSS file for styling
+import React, { useState, useEffect } from "react";
+import "./RequestsPage.scss"; // Import SCSS file for styling
+import usePendingUsers from "../../../hooks/admin/user/usePendingUsers";
+import Pagination from "../../CompentsAdmin/Pagination/Pagination";
+import useUpdateAccountStatus from "../../../hooks/admin/user/useUpdateAccountStatus";
 
 const RequestsPage = () => {
-    const [requests, setRequests] = useState([]);
+  const { getPendingUsers, data, totalPages } = usePendingUsers();
+  const { updateAccountStatus, success } = useUpdateAccountStatus();
 
-    useEffect(() => {
-        // Fetch requests from the backend when the component mounts
-        fetchRequests();
-    }, []);
+  const [currentPage, setCurrentPage] = useState(1);
+  const token = localStorage.getItem("authToken");
 
-    const fetchRequests = () => {
-        // Simulated requests data
-        const dummyRequests = [
-            {
-                id: 1,
-                userName: 'John Doe',
-                email: 'john@example.com',
-                status: 'Pending'
-            },
-            {
-                id: 2,
-                userName: 'Jane Smith',
-                email: 'jane@example.com',
-                status: 'Pending'
-            },
-            {
-                id: 3,
-                userName: 'Alice Johnson',
-                email: 'alice@example.com',
-                status: 'Pending'
-            }
-        ];
+  const [requests, setRequests] = useState([]);
 
-        setRequests(dummyRequests);
-    };
+  useEffect(() => {
+    getPendingUsers(token, currentPage);
+  }, [currentPage]);
 
-    const handleApprove = id => {
-        // Logic to approve user with given ID
-        console.log(`User with ID ${id} approved`);
-    };
+  useEffect(() => {
+    if (data) setRequests(data);
+  }, [data]);
 
-    return (
-        <div className="requests-page mainPage col-12">
-            <h1>Requests</h1>
-            <table className="requests-table">
-                <thead>
-                    <tr>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {requests.map(request => (
-                        <tr key={request.id}>
-                            <td>{request.userName}</td>
-                            <td>{request.email}</td>
-                            <td>{request.status}</td>
-                            <td>
-                                {request.status === 'Pending' && (
-                                    <button onClick={() => handleApprove(request.id)}>Approve</button>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+  const handleChangePage = (page) => setCurrentPage(page);
+  const handleApproveRequest = (id) => {
+    updateAccountStatus({ status: "Active" }, token, id);
+    setRequests(requests.filter((request) => request.id !== id));
+  };
+  return (
+    <div className="requests-page mainPage col-12">
+      <h1>Requests</h1>
+      <table className="requests-table">
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {requests &&
+            requests.map((request) => (
+              <tr key={request.id}>
+                <td>{request.name}</td>
+                <td>{request.email}</td>
+                <td>{request.phone}</td>
+                <td>{request.status}</td>
+                <td>
+                  {
+                    <button onClick={() => handleApproveRequest(request.id)}>
+                      Approve
+                    </button>
+                  }
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handleChangePage}
+      />
+    </div>
+  );
 };
 
 export default RequestsPage;

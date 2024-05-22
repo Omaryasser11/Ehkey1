@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ReservationsPage.scss"; // Import SCSS file for styling
 import useGetReservations from "../../../hooks/admin/reservation/useGetReservations";
+import Pagination from "../../CompentsAdmin/Pagination/Pagination";
 
 const ReservationsPage = () => {
   const {
@@ -27,18 +28,7 @@ const ReservationsPage = () => {
     return date.toLocaleString();
   };
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
-  };
-
+  const handlePageChange = (page) => setCurrentPage(page);
   return (
     <div className="reservations-page mainPage">
       <h1>Reservations</h1>
@@ -65,17 +55,11 @@ const ReservationsPage = () => {
             ))}
         </tbody>
       </table>
-      <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      <Pagination
+        onPageChange={handlePageChange}
+        totalPages={totalPages}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
