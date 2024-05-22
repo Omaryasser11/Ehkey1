@@ -38,6 +38,12 @@ class APIClient {
         headers: { Authorization: `Bearer ${_token}` },
       })
       .then((res) => res.data);
+  delete = (_token) =>
+    axiosInstance
+      .delete(this.endpoint, {
+        headers: { Authorization: `Bearer ${_token}` },
+      })
+      .then((res) => res.data);
 }
 
 export default APIClient;
