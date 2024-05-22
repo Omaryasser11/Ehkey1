@@ -38,6 +38,7 @@ const MessagePage = () => {
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Phone</th>
             <th>Message</th>
           </tr>
         </thead>
@@ -47,6 +48,7 @@ const MessagePage = () => {
               <tr key={request.id}>
                 <td>{request.name}</td>
                 <td>{request.email}</td>
+                <td>{request.phone}</td>
                 <td>{request.message}</td>
               </tr>
             ))}
