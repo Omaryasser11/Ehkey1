@@ -1,5 +1,6 @@
 import React from 'react'
 import "./section7Home.scss"
+import { Link } from 'react-router-dom'
 import Home3 from "../../assets/H66.png"
 
 export default function section7Home() {
@@ -15,7 +16,7 @@ export default function section7Home() {
                     <p className='pp'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae aliquid ipsa sunt doloribus eum officiis ullam alias,
                         quae elige
                         recusandae!</p>
-                    <button className='btn'>Read More</button>
+                        <Link className='btn' to="AboutUs">Read More</Link>
 
                 </div>
             </div>

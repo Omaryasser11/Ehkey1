@@ -13,7 +13,7 @@ const SearchInput = ({ onSearch }) => {
   };
 
   return (
-    <form className='col-6' onSubmit={handleSubmit}>
+    <form className='col-6 searchForm' onSubmit={handleSubmit}>
       <input className='search'
         type="text"
         placeholder="Search..."

@@ -33,26 +33,26 @@ import UsersPage from "./Admin/AdminPages/UsersList/UsersPage";
 import ForgotPasswordForm from "./pages/ResetPassword/ForgetPassword";
 import OTP from "./pages/ResetPassword/EnterOTP";
 import BasicInfoPage from "./Compents/MyAccountCompents/BasicInfoPage/BasicInfoPage";
-import { AuthProvider } from "./store/auth";
+import { AuthProvider, useAuth } from "./store/auth";
 import RequireAuth from "./store/RequireAuth";
 import ProductPage from "./pages/Products/ProudactPage";
 import CARTO from "./pages/Products/CART/cartPage";
+import CreditcardPage from "./Compents/MyAccountCompents/CreditCardPage/CreditCardPage.jsx"
 function App() {
+
   return (
     <RecoilRoot>
       <div className="App">
         <AuthProvider>
           <BrowserRouter>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <NavBar />
-                    <Outlet />
-                    <Footer />
-                  </>
-                }
+              <Route path="/" element={
+                <>
+                  <NavBar />
+                  <Outlet />
+                  <Footer />
+                </>
+              }
               >
                 <Route index element={<HomePage />} />
                 <Route path="ContactUs" element={<ContactUs />} />
@@ -66,21 +66,23 @@ function App() {
                     </RequireAuth>
                   }
                 />
-                <Route path="Packages" element={<Packages />} />
+                <Route path="Packages" element={<RequireAuth><Packages /></RequireAuth>} />
                 <Route path="Services" element={<Services />} />
                 <Route path="PolicyAndPrivacy" element={<PolicyAndPrivacy />} />
                 <Route path="form" element={<FormPage />} />
                 <Route path="SignUp" element={<SignUp />} />
                 <Route path="login" element={<LoginPage />} />
                 <Route path="/Cart2" element={<CARTO />} />
+
               </Route>
               <Route path="Admin*" element={<NoNavBarFooterRoutes />} />
-              <Route path="SA*" element={<NoNavBarFooterRoutes2 />} />
+              <Route path="SA*" element={<RequireAuth>  <NoNavBarFooterRoutes2 /></RequireAuth>} />
               <Route path="*" element={<Erorr404 />} />
               <Route path="Forget" element={<ForgotPasswordForm />} />
               <Route path="EnterOTP" element={<OTP />} />
               <Route path="Basic" element={<BasicInfoPage />} />
               <Route path="Product" element={<ProductPage />} />
+
             </Routes>
           </BrowserRouter>
         </AuthProvider>

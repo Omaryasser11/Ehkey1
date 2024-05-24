@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Assuming you're using Axios for HTTP requests
-import "./Transactionpage.scss"
+import "./Transactionpage.scss";
+
 const TransactionPage = () => {
     const [transactions, setTransactions] = useState([]);
+    const [selectedTransaction, setSelectedTransaction] = useState(null);
 
     useEffect(() => {
         // Fetch transactions from the backend when the component mounts
@@ -18,6 +20,7 @@ const TransactionPage = () => {
             console.error('Error fetching transactions:', error);
         }
     };
+
     const dummyTransactions = [
         {
             id: 1,
@@ -42,33 +45,51 @@ const TransactionPage = () => {
         }
     ];
 
+    const handleTransactionClick = (transaction) => {
+        setSelectedTransaction(transaction);
+    };
+
+    const handleBackClick = () => {
+        setSelectedTransaction(null);
+    };
 
     return (
-
         <div className="transaction-page mainPage col-12">
             <h1>Transactions</h1>
-            <table className="transaction-table">
-                <thead>
-                    <tr>
-                        <th>User Name</th>
-                        <th>Email</th>
-                        <th>Total Amount</th>
-                        <th>Date of Purchase</th>
-                        <th>Transaction ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {transactions.map(transaction => (
-                        <tr key={transaction.id}>
-                            <td>{transaction.userName}</td>
-                            <td>{transaction.email}</td>
-                            <td>{transaction.totalAmount}</td>
-                            <td>{transaction.date}</td>
-                            <td>{transaction.id}</td>
+            {selectedTransaction ? (
+                <div className="transaction-details">
+                    <h2>Transaction Details</h2>
+                    <p><strong>User Name:</strong> {selectedTransaction.userName}</p>
+                    <p><strong>Email:</strong> {selectedTransaction.email}</p>
+                    <p><strong>Total Amount:</strong> {selectedTransaction.totalAmount}</p>
+                    <p><strong>Date of Purchase:</strong> {selectedTransaction.date}</p>
+                    <p><strong>Transaction ID:</strong> {selectedTransaction.id}</p>
+                    <button onClick={handleBackClick}>Back to Transactions</button>
+                </div>
+            ) : (
+                <table className="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Total Amount</th>
+                            <th>Date of Purchase</th>
+                            <th>Transaction ID</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {transactions.map(transaction => (
+                            <tr key={transaction.id} onClick={() => handleTransactionClick(transaction)}>
+                                <td>{transaction.userName}</td>
+                                <td>{transaction.email}</td>
+                                <td>{transaction.totalAmount}</td>
+                                <td>{transaction.date}</td>
+                                <td>{transaction.id}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
         </div>
     );
 };

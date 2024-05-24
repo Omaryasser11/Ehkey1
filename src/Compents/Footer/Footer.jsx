@@ -9,6 +9,7 @@ import { faFacebook, faTiktok, faLinkedin, faXTwitter } from '@fortawesome/free-
 import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
 
 import "./Footer.scss"
+import { Link } from 'react-router-dom';
 export default function Footer() {
     return (
         <div className='footer col-12'>
@@ -26,10 +27,10 @@ export default function Footer() {
 
                 <div className='leftMain col-2'>
                     <div className='title1 col-9'>
-                        <div className='coll'>
+                        <Link className='coll' to="/">
                             <img className='I33' src={Icon} />
 
-                        </div>
+                        </Link>
                     </div>
                 </div>
 

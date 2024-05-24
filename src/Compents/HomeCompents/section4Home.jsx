@@ -5,6 +5,7 @@ import Two from "../../assets/premium (2).png";
 import three from "../../assets/premium (3).png";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 
 function Section10Home() {
     useEffect(() => {
@@ -26,19 +27,19 @@ function Section10Home() {
                         <img src={one} alt="" />
                         <p>Golden Package</p>
                         <span>We Provide One Session <br /> .</span>
-                        <button className='btn'>Add to Cart</button>
+                        <Link className='btn' to="Services">Add to Cart</Link>
                     </div>
                     <div className="col-4 card" data-aos="fade-down" data-aos-duration='1500' >
                         <img src={Two} alt="" />
                         <p>Sliver Package</p>
                         <span>We Provide Five Session Plus Two Seesion Free</span>
-                        <button className='btn'>Add to Cart</button>
+                        <Link className='btn' to="Services">Add to Cart</Link>
                     </div>
                     <div className="col-4 card" data-aos='fade-left' data-aos-duration='1500'>
                         <img src={three} alt="" />
                         <p>perimum Package</p>
                         <span>We Provide Five Session Plus Two Seesion Free</span>
-                        <button className='btn'>Add to Cart</button>
+                        <Link className='btn' to="Services">Add to Cart</Link>
                     </div>
                 </div>
             </div>

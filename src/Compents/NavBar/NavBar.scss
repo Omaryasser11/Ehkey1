@@ -11,9 +11,6 @@
     align-content: center;
     justify-content: space-between;
     align-items: center;
-
-
-
 }
 
 .Lift {
@@ -45,14 +42,298 @@
     justify-content: flex-end;
     align-items: center;
     width: 30%;
+
+    .Links {
+        width: 51%;
+        margin-right: .5rem;
+
+        a {
+            text-decoration: none;
+            font-size: 15px;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+    }
 }
 
-.Links {
+.Lift .Links {
+
     a {
-        color: white;
         text-decoration: none;
-        font-size: 15px;
+        font-size: 17px;
         margin: 0 10px;
-        font-weight: 500;
+        font-weight: 800;
+        font-family: "Reddit Sans", sans-serif;
+        background-image: linear-gradient(to right,
+                #ebfbff,
+                #ebfbff 50%,
+                white 50%);
+        background-size: 200% 100%;
+        background-position: -100%;
+        display: inline-block;
+        padding: 5px 0;
+        position: relative;
+        background-clip: text;
+        color: transparent;
+        transition: all 0.3s ease-in-out;
     }
+
+    a:before {
+        content: '';
+        background: #ebfbff;
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    a:hover {
+        background-position: 0;
+    }
+
+    a:hover::before {
+        width: 100%;
+    }
+
+}
+
+.Auth {
+    width: 120%;
+    background-color: whitesmoke;
+    border-radius: 2rem;
+
+    height: 2rem;
+    overflow: hidden;
+}
+
+.Auth .D {
+    box-shadow: inset 0 0 0 0 #25634c;
+    color: #062d1f;
+    margin: 0 -.25rem;
+    padding: 0 .5rem;
+    transition: color .4s ease-in-out, box-shadow .7s ease-in-out;
+    height: 100%;
+}
+
+.Auth .D .Flat {
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #062d1f;
+    font-size: 15px;
+}
+
+.Cline {
+    background-color: #062d1f;
+    width: .2rem;
+    height: 5rem;
+}
+
+.D:hover {
+
+    box-shadow: inset 100px 0 0 0#0f6c4a;
+
+
+}
+
+.D:hover .Flat {
+    color: white;
+}
+
+a {
+    box-shadow: inset 0 0 0 0 #25634c;
+    color: #05442d;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.flexRSB {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Links .cart1 {
+    background-color: white;
+    box-shadow: inset 0 0 0 0#93cfb9;
+    color: #062d1f;
+    margin: 0 -.25rem;
+    padding: 0 .5rem;
+    transition: color .7s ease-in-out, box-shadow .8s ease-in-out;
+    height: 2.25rem;
+    width: 2.25rem;
+
+
+    .CartIcon {
+        color: #062d1f;
+    }
+}
+
+.cart1:hover {
+    box-shadow: inset 0 100px 0 0#05442d;
+
+}
+
+.cart1:hover .CartIcon {
+    color: white;
+}
+
+.Profile {
+    background: white;
+    height: 2.25rem;
+    width: 2.25rem;
+    text-align: center;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+    transition: color .7s ease-in-out, box-shadow .8s ease-in-out;
+    margin-left: .5rem;
+}
+
+.Profile .profileIcon {
+    font-size: 1.15rem;
+    color: #05442d;
+}
+
+.Profile:hover {
+    box-shadow: inset 0 100px 0 0#05442d;
+
+}
+
+.Profile:hover .profileIcon {
+    color: white;
+}
+
+.welcome {
+    color: white;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.navbar-toggle {
+    display: none;
+}
+
+.Menu.active {
+    max-height: 500px;
+    background-color: #fff;
+    /* Adjust this value as needed */
+}
+
+.nav-elements {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background-color: #fef7e5;
+    width: 0;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .Links {
+        display: none;
+
+    }
+
+    .Menu.active {
+        width: 50%;
+        /* display: none; */
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        position: absolute;
+        top: 11px;
+        right: 5px;
+
+
+
+        a:before {
+            content: '';
+            background: #03531e;
+            display: block;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-position: 0;
+        }
+
+        a:hover::before {
+            width: 100%;
+        }
+    }
+
+    .Icon {
+        height: 100%;
+        width: 33%;
+    }
+
+    /* Show the toggle button only for mobile size */
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .Menu.active {
+        max-height: 500px;
+        /* Adjust this value as needed */
+    }
+    .Menu.active a {
+        text-decoration: none;
+        font-size: 17px;
+        margin: 0 10px;
+        font-weight: 800;
+        font-family: "Reddit Sans", sans-serif;
+        background-size: 200% 100%;
+        background-position: -100%;
+        display: inline-block;
+        padding: 5px 0;
+        position: relative;
+        background-clip: text;
+        transition: all 0.3s ease-in-out;
+        background-image: linear-gradient(to right,
+        #03531e,
+        #03531e, 50%,
+       white, 50%);
+    }
+
 }

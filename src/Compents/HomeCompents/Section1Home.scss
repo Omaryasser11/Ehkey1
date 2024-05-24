@@ -1,5 +1,5 @@
 #section1 {
-margin-top:4rem ;
+  margin-top: 4rem;
   height: 60vh;
   background-color: #25634Cff;
   display: flex;
@@ -144,3 +144,14 @@ margin-top:4rem ;
 // background-color: #429A7Aff;
 // background-color: #4CAC8Aff;
 // background-color: #56BE99ff;
+
+
+// Mobile styles
+@media screen and (max-width: 767px) {}
+
+
+// Tablet styles
+@media screen and (min-width: 768px) and (max-width: 1199px) {}
+
+// Desktop styles
+@media screen and (min-width: 1200px) {}

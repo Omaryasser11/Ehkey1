@@ -8,11 +8,19 @@ import TextField from '@mui/material/TextField';
 import './index.scss';
 import { useAuth } from '../../store/auth'
 const LoginForm = () => {
-    const auth = useAuth()
+
+
+
+
+
+  
+    const { login1 } = useAuth();
+
+    //    const auth = useAuth()
     const location = useLocation();
     const navigate = useNavigate();
-    const redirectpath = location.state?.path || "/"
-
+    // const redirectpath = location.state?.path || "/"
+    const redirectPath = location.state?.from?.pathname || '/';
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -48,18 +56,21 @@ const LoginForm = () => {
                 const userName = response.data.name;
                 // Store authToken in local storage or session storage for subsequent requests
                 localStorage.setItem('authToken', authToken);
-
+                localStorage.setItem("user", userName)
                 // Set loggedIn to true
                 setLoggedIn(true);
 
                 // Set username state
                 setUsernameState(formData.email);
-                auth.login(userName)
+                // auth.login(userName)
+                login1(authToken, userName);
+
                 console.log('isLogged (after login):', isLoggedIn ? 'true' : 'false'); // Print after login
                 console.log('Login successful!');
 
                 // Redirect to homepage
-                navigate(redirectpath, { replace: true });
+       
+                navigate(redirectPath, { replace: true });
             } catch (error) {
                 setLoginError('Incorrect email or password');
             }

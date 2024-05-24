@@ -33,7 +33,7 @@
 
         font-family: "Jost", Sans-serif;
         font-family: "Exo 2", sans-serif;
-        
+
 
     }
 
@@ -74,7 +74,7 @@
 
 }
 
-.cart {
+.rtrt .card {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -91,18 +91,10 @@
         margin: 0S;
         height: 10rem;
         color: #25634c;
-        
+
     }
 
-    p {
-        font-family: 'Exo 2', sans-serif;
-        font-size: 25.6px;
-        font-weight: 600;
-        letter-spacing: normal;
-        color: #25634c;
-        margin: 0;
-        margin-bottom: 5px;
-    }
+
 
     span {
         font-family: 'Roboto', sans-serif;
@@ -126,4 +118,16 @@
     background-color: #3b0f55;
     margin-top: .75rem;
     margin-bottom: 2rem;
+}
+
+.rtrt .card p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: normal;
+    color: #25634c;
+    margin: 0;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
 }

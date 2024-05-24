@@ -26,14 +26,14 @@ function Section6Home() { // Changed function name to start with uppercase
             </div>
             <div className='col-10 main '>
                 <div className='col-9 rtrt'>
-                    <div className='cart col-3 'data-aos='fade-down' data-aos-delay="350">
+                    <div className='card col-3 'data-aos='fade-down' data-aos-delay="350">
 
                     <FontAwesomeIcon className='icon' icon={faUserShield} />
                         <p>Swift Delivery</p>
                         <span>Efficient, Speedy, Punctual :<br />  Swift Delivery at Your Service!</span>
                     </div>
 
-                    <div className='cart col-3'data-aos='fade-down' data-aos-delay="700">
+                    <div className='card col-3'data-aos='fade-down' data-aos-delay="700">
 
                     <FontAwesomeIcon  className='icon' icon={faHandsHoldingCircle} />
                         <p>Trusted Service</p>
@@ -42,7 +42,7 @@ function Section6Home() { // Changed function name to start with uppercase
                     </div>
 
 
-                    <div className='cart col-3'data-aos='fade-down' data-aos-delay="1050" >
+                    <div className='card col-3'data-aos='fade-down' data-aos-delay="1050" >
 
                     <FontAwesomeIcon className='icon' icon={faPersonHarassing} />
                         <p>Vaccinated Courier</p>
@@ -50,7 +50,7 @@ function Section6Home() { // Changed function name to start with uppercase
                     </div>
 
 
-                    <div className='cart col-3'data-aos='fade-down' data-aos-delay="1400" >
+                    <div className='card col-3'data-aos='fade-down' data-aos-delay="1400" >
 
                     <FontAwesomeIcon className='icon' icon={faHandHoldingMedical} />  
                         <p>Safety Protocol</p>
