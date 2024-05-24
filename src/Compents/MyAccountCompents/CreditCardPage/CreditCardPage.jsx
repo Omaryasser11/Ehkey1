@@ -7,7 +7,6 @@ const CreditCardForm = () => {
         name: "",
         expiry: "",
         cvc: "",
-        name: "",
         focus: "",
     });
     const handleInputChange = (e) => {
