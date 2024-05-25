@@ -11,8 +11,9 @@
     background-color: 3caa81;
     height: 100vh;
 }
+
 .SuperMain {
-    height: calc(100% - 10vh);
+    height: 100%;
     background-color: white;
     width: 100%;
     box-shadow: inset rgba(0, 0, 0, 0.16) 0px 0px 8px 5px, inset rgba(0, 0, 0, 0.23) 10px 11px 18px 4px;
@@ -24,6 +25,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .Main2 {
     width: 100%;
     display: flex;
@@ -32,8 +34,10 @@
     align-content: center;
     justify-content: flex-start;
     align-items: center;
-
     background-color: #3caa81;
     border-radius: 1rem;
     margin-left: -0.42rem;
+    position: fixed;
+    right: 0;
+    width: calc(100% - 250px);
 }

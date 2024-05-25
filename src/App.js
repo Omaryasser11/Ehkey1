@@ -37,7 +37,7 @@ import { AuthProvider, useAuth } from "./store/auth";
 import RequireAuth from "./store/RequireAuth";
 import ProductPage from "./pages/Products/ProudactPage";
 import CARTO from "./pages/Products/CART/cartPage";
-import CreditcardPage from "./Compents/MyAccountCompents/CreditCardPage/CreditCardPage.jsx";
+import CreateAccount from "./Admin/AdminPages/CreateAccont/CreateAccount.jsx";
 function App() {
   return (
     <RecoilRoot>
@@ -110,7 +110,6 @@ function NoNavBarFooterRoutes() {
     <div className="SA1">
       <Navcol />
       <div className="Main">
-        <TopBar />
         <Routes>
           <Route index element={<HomeAdmin />} />
           {/* Add Admin2 route here */}
@@ -118,7 +117,7 @@ function NoNavBarFooterRoutes() {
           <Route path="H2" element={<P2 />} />
           <Route path="*" element={<Erorr404 />} />
           <Route path="CustomerBill" element={<CustomerBill />} />
-
+          <Route path="CreateAccount" element={<CreateAccount />} />
           {/* <Route index element={<HomeAdmin />} /> */}
         </Routes>
       </div>
@@ -130,7 +129,7 @@ function NoNavBarFooterRoutes2() {
     <div className="SA2">
       <Navcol />
       <div className="Main2">
-        <TopBar />
+        {/* <TopBar /> */}
         <Routes>
           <Route index element={<HomeAdmin />} />
           {/* Add Admin2 route here */}

@@ -26,7 +26,7 @@ export default function Navcol() {
 
     return (
         <>
-            {isMini && (
+            {/* {isMini && (
                 <div id="NavBar" className={isMini ? 'mini' : ''}>
 
 
@@ -153,13 +153,13 @@ export default function Navcol() {
 
 
                 </div>
-            )}
+            )} */}
 
 
 
-            {!isMini && original &&
-                (
-                    <div id="NavBar" className={isMini ? 'mini' : ''}>
+     
+                {/* (       {!isMini && original && */}
+                    <div id="NavBar" className=" fixed-content">
 
 
                         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -246,7 +246,7 @@ export default function Navcol() {
                             <span class="sidebar-heading">
                                 Create Accounts
                             </span>
-                            <Link class="nav-item" to="/Admin/H1">
+                            {/* <Link class="nav-item" to="/Admin/H1">
 
                                 <FontAwesomeIcon className='FontAwsame' icon={faUserTie} />
                                 <span>Operation </span>
@@ -256,10 +256,10 @@ export default function Navcol() {
 
                                 <FontAwesomeIcon className='FontAwsame' icon={faUserTie} />
                                 <span>Fienece </span>
-                            </Link>
+                            </Link> */}
 
 
-                            <Link class="nav-item" to="/Admin/H1">
+                            <Link class="nav-item" to="/Admin/CreateAccount">
 
                                 <FontAwesomeIcon className='FontAwsame' icon={faUserPlus} />
                                 <span>User</span>
@@ -304,8 +304,9 @@ export default function Navcol() {
 
 
 
-                    </div>
-                )}
+                    </div >
+                {/* )
+            } */}
         </>
     )
 }
