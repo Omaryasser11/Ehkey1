@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { cartState } from "../../../store/index";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import "./Cart.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -11,59 +11,13 @@ import EmptyCart from "../../../assets/Empty.png";
 import useGetCart from "../../../hooks/cart/useGetCart";
 import useUpdateCartQtn from "../../../hooks/cart/useUpdateCartQtn";
 import useRemoveFromCart from "../../../hooks/cart/useRemoveFromCart";
+import useCheckout from "../../../hooks/payments/useCheckout";
 const CartPage = () => {
-  // const [cart, setCart] = useRecoilState(cartState);
-
-  // const incrementQuantity = (id) => {
-  //     const newCart = cart.map(item =>
-  //         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-  //     );
-  //     setCart(newCart);
-  // };
-
-  // const decrementQuantity = (id) => {
-  //     const product = cart.find(item => item.id === id);
-  //     if (product.quantity > 1) {
-  //         const newCart = cart.map(item =>
-  //             item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-  //         );
-  //         setCart(newCart);
-  //     } else {
-  //         Swal.fire({
-  //             title: "Do you remove from cart?",
-  //             showDenyButton: true,
-  //             showCancelButton: true,
-  //             confirmButtonText: "Yes",
-  //             denyButtonText: `No`
-  //         }).then((result) => {
-  //             if (result.isConfirmed) {
-  //                 const newCart = cart.filter(item => item.id !== id);
-  //                 setCart(newCart);
-  //             }
-  //         });
-  //     }
-  // };
-  // const remove = (id) => {
-
-  //     Swal.fire({
-  //         title: "Do you remove from cart?",
-  //         showDenyButton: true,
-  //         showCancelButton: true,
-  //         confirmButtonText: "Yes",
-  //         denyButtonText: `No`
-  //     }).then((result) => {
-  //         if (result.isConfirmed) {
-  //             const newCart = cart.filter(item => item.id !== id);
-  //             setCart(newCart);
-  //         }
-  //     });
-  // }
-  // const totalProducts = cart.length;
-  // const totalAmount = "$" + cart.reduce((sum, item) => sum + ((item.quantity) * (item.price)), 0).toFixed(2)
-
   const { getCartItems, cartItems } = useGetCart();
   const { updateCartQtn, success, isLoading } = useUpdateCartQtn();
   const { removeFromCart, removeStatus } = useRemoveFromCart();
+  const { makeCheckout, payment_url } = useCheckout();
+  const [paymentClick, setPaymentClick] = useState(false);
   const token = localStorage.getItem("authToken");
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
@@ -92,12 +46,20 @@ const CartPage = () => {
       );
     }
   }, [cartItems]);
+  useEffect(() => {
+    if (payment_url) window.open(payment_url, "_blank");
+  }, [payment_url]);
+
   const handleChangeQuantity = (qtn, id) => {
     if (!isLoading) updateCartQtn(id, token, qtn);
   };
   const handleRemoveFromCart = (id) => {
     removeFromCart(id, token);
     getCartItems(token);
+  };
+  const handleCheckout = () => {
+    makeCheckout(token);
+    setPaymentClick(true);
   };
   if (!cartItems || !cartItems.length) {
     return (
@@ -210,7 +172,14 @@ const CartPage = () => {
                 <span className="A">Total Amount</span>
                 <span className="A">${totalAmount}</span>
               </div>
-              <button className="col-12 btn1"> CheckOut</button>
+              <button className="col-12 btn1" onClick={handleCheckout}>
+                CheckOut
+              </button>
+              <p>
+                {paymentClick
+                  ? "You will be redirected to payment page shortly..."
+                  : ""}
+              </p>
             </div>
           </>
         )}
