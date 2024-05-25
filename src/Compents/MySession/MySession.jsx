@@ -7,7 +7,9 @@ import formatDate from "../../services/formatDate";
 const MySession = () => {
   const [showOrders, setShowOrders] = useState(false);
   const { getUserSessions, sessions } = useGetUserSessions();
-  const toggleShowOrders = () => {
+  const [selectedId, setSelectedId] = useState(0);
+  const toggleShowOrders = (id) => {
+    setSelectedId(id);
     setShowOrders(!showOrders);
   };
   const token = localStorage.getItem("authToken");
@@ -18,7 +20,7 @@ const MySession = () => {
 
   const renderContent = () => {
     if (showOrders) {
-      return <AppointmentBooking onClose={toggleShowOrders} />;
+      return <AppointmentBooking id={selectedId} onClose={toggleShowOrders} />;
     } else {
       return (
         <div className="my-session mainPage col-12">
@@ -39,13 +41,15 @@ const MySession = () => {
                   <tr key={transaction.id}>
                     <td>{transaction.id}</td>
                     <td>{formatDate(transaction.startDateTime)}</td>
-                    <td>
-                      {formatDate(transaction.endDateTime)}
-                    </td>
+                    <td>{formatDate(transaction.endDateTime)}</td>
                     <td>{transaction.status}</td>
                     <td>
                       {transaction.status === "Scheduled" && (
-                        <button onClick={toggleShowOrders}>Change Time</button>
+                        <button
+                          onClick={() => toggleShowOrders(transaction.id)}
+                        >
+                          Change Time
+                        </button>
                       )}
                       {transaction.status !== "Scheduled" && (
                         <p>Change Not Vaild </p>

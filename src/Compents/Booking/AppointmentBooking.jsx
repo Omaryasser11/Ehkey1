@@ -3,14 +3,16 @@ import "./AppointmentBooking.scss";
 import useAvailableTimeSlots from "../../hooks/time-slots/useAvailableTimeSlots";
 import useBookASession from "../../hooks/sessions/useBookASession";
 import convertTo12HourFormat from "../../services/convertTo12HourFormat";
+import useUpdateSession from "../../hooks/sessions/useUpdateSession";
 
-const AppointmentBooking = () => {
+const AppointmentBooking = ({ id = null }) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedSlot, setSelectedSlot] = useState();
   const [availableAppointments, setAvailableAppointments] = useState([]);
 
   const { getAvailableTimeSlots, success, slots } = useAvailableTimeSlots();
   const { bookASession, error, success: bookSuccess } = useBookASession();
+  const { updateSession } = useUpdateSession();
   const token = localStorage.getItem("authToken");
 
   const today = new Date();
@@ -57,7 +59,11 @@ const AppointmentBooking = () => {
       timeSlotId: selectedSlot.id,
       timeZone: "UTC",
     };
-    bookASession(data, token);
+    if (id == null) {
+      bookASession(data, token);
+    } else {
+      updateSession(id, data, token);
+    }
     setSelectedDate("");
     setSelectedSlot(null);
     setAvailableAppointments([]);
