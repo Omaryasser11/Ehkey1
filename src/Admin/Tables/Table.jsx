@@ -1,89 +1,80 @@
-
-import React, { useState } from 'react';
-import { Table } from 'react-bootstrap';
-import "./Table.scss"
-import CustomerBill from '../CompentsAdmin/CustomerBill/CustomerBill';
+import React, { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
+import "./Table.scss";
+import CustomerBill from "../CompentsAdmin/CustomerBill/CustomerBill";
+import useGetPayments from "../../hooks/admin/payment/useGetPayments";
+import Pagination from "../CompentsAdmin/Pagination/Pagination";
 const MyTableComponent = () => {
-    const [showCustomerBill, setShowCustomerBill] = useState(false);
-    const [selectedBillData, setSelectedBillData] = useState(null);
+  const [selectedBillData, setSelectedBillData] = useState(null);
+  const { data, getPayments, success, totalPages } = useGetPayments();
+  const [currentPage, setCurrentPage] = useState(1);
 
-    const handleBillClick = (billData) => {
-        setSelectedBillData(billData);
-        setShowCustomerBill(true);
-    };
+  const token = localStorage.getItem("authToken");
+  useEffect(() => {
+    getPayments(token, currentPage);
+  }, []);
+  useEffect(() => {
+    getPayments(token, currentPage);
+  }, [currentPage]);
 
-    const handleExitCustomerBill = () => {
-        setSelectedBillData(null);
-        setShowCustomerBill(false);
-    };
+  const handleBillClick = (billData) => {
+    setSelectedBillData(billData);
+  };
 
-   
-    // Sample data for demonstration
-    const data = [
-        { id: 1, name: 'John', email: 'John123@Gmail.com', billNo: 1, amount: 1500 },
-        { id: 2, name: 'Jane', email: 'Jane145@Gmail.com', billNo: 2, amount: 800 },
-        { id: 3, name: 'Sam', email: 'Sam85@Gmail.com', billNo: 7, amount: 1750 },
-        { id: 4, name: 'John', email: 'John123@Gmail.com', billNo: 1, amount: 1500 },
-        { id: 5, name: 'Jane', email: 'Jane145@Gmail.com', billNo: 2, amount: 800 },
-        { id: 6, name: 'Sam', email: 'Sam85@Gmail.com', billNo: 7, amount: 1750 },
-        { id: 7, name: 'John', email: 'John123@Gmail.com', billNo: 1, amount: 1500 },
-        { id: 8, name: 'Jane', email: 'Jane145@Gmail.com', billNo: 2, amount: 800 },
-        { id: 9, name: 'Sam', email: 'Sam85@Gmail.com', billNo: 7, amount: 1750 },
-        { id: 10, name: 'John', email: 'John123@Gmail.com', billNo: 1, amount: 1500 },
-        { id: 11, name: 'Jane', email: 'Jane145@Gmail.com', billNo: 2, amount: 800 },
-        { id: 12, name: 'Sam', email: 'Sam85@Gmail.com', billNo: 7, amount: 1750 },
-        { id: 13, name: 'John', email: 'John123@Gmail.com', billNo: 1, amount: 1500 },
-    ];
+  const handleExitCustomerBill = () => {
+    setSelectedBillData(null);
+  };
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    console.log("page", page);
+  };
 
-    // Render CustomerBill component if showCustomerBill is true
-    if (showCustomerBill && selectedBillData) {
-        return (
-            <div className='col-12'>
-                <CustomerBill customer={selectedBillData.customer} items={selectedBillData.items} />
-                <button onClick={handleExitCustomerBill}>Exit</button>
-            </div>
-        );
-    }
-
+  if (selectedBillData) {
     return (
-        <div className='col-12'>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Customer Name</th>
-                        <th>Email</th>
-                        <th>Bill No</th>
-                        <th>Total Amount</th>
-                     
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.id}</td>
-                            <td>{item.name}</td>
-                            <td>{item.email}</td>
-                            <td>{item.amount} Egp</td>
-                            <td>
-                                <button className='A' onClick={() => handleBillClick({ customer: item, items: { name: 'Item Name', price: item.amount } })}>{item.billNo}</button>
-                            </td>
-                           
-                        </tr>
-                    ))}
-                </tbody>
-            </Table>
-        </div>
+      <div className="col-12">
+        <CustomerBill data={selectedBillData} />
+        <button onClick={handleExitCustomerBill}>Exit</button>
+      </div>
     );
-}
+  }
+
+  return (
+    <div className="col-12">
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Bill No</th>
+            <th>Total Amount</th>
+            <th>Total Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td>{item.user.name}</td>
+              <td>{item.user.email}</td>
+              <td>{item.transactionId || "Unpaid"}</td>
+              <td>{item.amount} EGP</td>
+              <td>
+                <button className="A" onClick={() => handleBillClick(item)}>
+                  {item.amount}
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+      <Pagination
+        onPageChange={handlePageChange}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
+    </div>
+  );
+};
 
 export default MyTableComponent;
-
-
-
-
-
-
-
-
-
