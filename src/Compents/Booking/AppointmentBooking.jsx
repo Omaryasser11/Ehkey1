@@ -10,7 +10,7 @@ const AppointmentBooking = ({ id = null }) => {
   const [selectedSlot, setSelectedSlot] = useState();
   const [availableAppointments, setAvailableAppointments] = useState([]);
 
-  const { getAvailableTimeSlots, success, slots } = useAvailableTimeSlots();
+  const { getAvailableTimeSlots, slots } = useAvailableTimeSlots();
   const { bookASession, error, success: bookSuccess } = useBookASession();
   const { updateSession } = useUpdateSession();
   const token = localStorage.getItem("authToken");

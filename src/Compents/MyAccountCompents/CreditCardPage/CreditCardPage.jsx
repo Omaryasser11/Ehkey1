@@ -1,89 +1,91 @@
-import React, { useState } from "react";
-import Cards from "react-credit-cards-2";
-import "react-credit-cards-2/dist/es/styles-compiled.css";
+import React, { useEffect, useState } from "react";
+import useAddBankInfo from "../../../hooks/account/useAddBankInfo";
+
 const CreditCardForm = () => {
-    const [state, setState] = useState({
-        number: "",
-        name: "",
-        expiry: "",
-        cvc: "",
-        focus: "",
-    });
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setState((prev) => ({ ...prev, [name]: value }));
-    };
-    const handleInputFocus = (e) => {
-        setState((prev) => ({ ...prev, focus: e.target.name }));
-    };
-    return (
-        <div className="flex col-12">
-            <Cards
-                number={state.number}
-                expiry={state.expiry}
-                cvc={state.cvc}
-                name={state.name}
-                focused={state.focus}
+  const { addBankInfo, success, error } = useAddBankInfo();
+  const [state, setState] = useState({
+    iban: "",
+    bankName: "",
+    fullName: "",
+    swiftCode: "",
+  });
+  useEffect(() => {
+    success &&
+      setState({ iban: "", bankName: "", fullName: "", swiftCode: "" });
+  }, [success]);
+  const handleInputChange = (e) => {
+    const { bankName, value } = e.target;
+    setState((prev) => ({ ...prev, [bankName]: value }));
+  };
+
+  const handleInputFocus = (e) => {
+    setState((prev) => ({ ...prev, focus: e.target.bankName }));
+  };
+
+  const token = localStorage.getItem("authToken");
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault(); // This prevents the form from reloading the page
+    addBankInfo(state, token);
+  };
+
+  return (
+    <div className="flex col-12">
+      <div className="mt-3 col-12">
+        <form className="col-12" onSubmit={handleSubmitForm}>
+          <div className="mb-3">
+            <input
+              type="text"
+              name="iban"
+              className="form-control"
+              placeholder="IBAN"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
             />
-            <div className="mt-3">
-                <form>
-                    <div className="mb-3">
-                        <input
-                            type="number"
-                            name="number"
-                            className="form-control"
-                            placeholder="Card Number"
-                            value={state.number}
-                            onChange={handleInputChange}
-                            onFocus={handleInputFocus}
-                            required
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <input
-                            type="text"
-                            name="name"
-                            className="form-control"
-                            placeholder="Name"
-                            onChange={handleInputChange}
-                            onFocus={handleInputFocus}
-                            required
-                        />
-                    </div>
-                    <div className="row">
-                        <div className="col-6 mb-3">
-                            <input
-                                type="number"
-                                name="expiry"
-                                className="form-control"
-                                placeholder="Valid Thru"
-                                pattern="\d\d/\d\d"
-                                value={state.expiry}
-                                onChange={handleInputChange}
-                                onFocus={handleInputFocus}
-                                required
-                            />
-                        </div>
-                        <div className="col-6 mb-3">
-                            <input
-                                type="number"
-                                name="cvc"
-                                className="form-control"
-                                placeholder="CVC"
-                                pattern="\d{3,4}"
-                                value={state.cvc}
-                                onChange={handleInputChange}
-                                onFocus={handleInputFocus}
-                                required
-                            />
-                        </div>
-                    </div>
-                    <div className="d-grid">
-                        <button className="btn btn-dark">Confirm</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
+          </div>
+
+          <div className="mb-3">
+            <input
+              type="text"
+              name="bankName"
+              className="form-control"
+              placeholder="Bank Name"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+          </div>
+
+          <div className="mb-3">
+            <input
+              type="text"
+              name="fullName"
+              className="form-control"
+              placeholder="Full Name"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+          </div>
+
+          <div className="mb-3">
+            <input
+              type="text"
+              name="swiftCode"
+              className="form-control"
+              placeholder="Swift Code"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+          </div>
+
+          <div className="d-grid">
+            <button className="btn btn-dark">Confirm</button>
+          </div>
+        </form>
+        {error}
+        {success && "Payment Information Added"}
+      </div>
+    </div>
+  );
 };
+
 export default CreditCardForm;
