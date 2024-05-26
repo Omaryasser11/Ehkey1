@@ -1,15 +1,15 @@
 import { useState } from "react";
 import APIClient from "../../../services/api-service";
 
-const apiClient = new APIClient("users");
+const apiClient = new APIClient("recommended-emails");
 
-const useAddUser = () => {
+const useAddRecommendedEmail = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const addUser = async (formData, token) => {
+  const addRecommendedEmail = async (email, token) => {
     try {
-      const res = await apiClient.post(formData, token);
+      const res = await apiClient.post({ email }, token);
       setSuccess(true);
       setError("");
       console.log("res", res);
@@ -22,7 +22,7 @@ const useAddUser = () => {
   return {
     error,
     success,
-    addUser,
+    addRecommendedEmail,
   };
 };
-export default useAddUser;
+export default useAddRecommendedEmail;

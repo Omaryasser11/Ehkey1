@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import * as XLSX from "xlsx"; // Import all modules from xlsx library
-import "./UserVerifiedPage.scss"; // Import SCSS file for styling
-import useAddRecommendedEmail from "../../../hooks/admin/user/useAddRecommendedEmail";
+import * as XLSX from "xlsx";
+import "./UserVerifiedPage.scss";
 import useGetRecommendedEmails from "../../../hooks/admin/user/useGetRecommendedEmails";
 import { useEffect } from "react";
 import Pagination from "../../CompentsAdmin/Pagination/Pagination";
+import useAddRecommendedEmail from "../../../hooks/admin/user/useAddRecommendedEmail";
 
 const UserVerifiedPage = ({ onBack }) => {
   const { addRecommendedEmail } = useAddRecommendedEmail();
