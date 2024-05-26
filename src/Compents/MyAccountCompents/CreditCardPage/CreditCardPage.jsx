@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useAddBankInfo from "../../../hooks/account/useAddBankInfo";
+import useGetBankInfo from "../../../hooks/account/useGetBankInfo";
+import useUpdateBankInfo from "../../../hooks/account/useUpdateBankInfo";
 
 const CreditCardForm = () => {
   const { addBankInfo, success, error } = useAddBankInfo();
+  const { getBankInfo, code, setCode, data } = useGetBankInfo();
+  const { updateBankInfo } = useUpdateBankInfo();
   const [state, setState] = useState({
     iban: "",
     bankName: "",
@@ -13,20 +17,28 @@ const CreditCardForm = () => {
     success &&
       setState({ iban: "", bankName: "", fullName: "", swiftCode: "" });
   }, [success]);
+  useEffect(() => {
+    getBankInfo(token);
+  }, []);
+  useEffect(() => {
+    console.log("data", data);
+    data && setState(data);
+  }, [data]);
   const handleInputChange = (e) => {
-    const { bankName, value } = e.target;
-    setState((prev) => ({ ...prev, [bankName]: value }));
+    const { name, value } = e.target;
+    setState((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleInputFocus = (e) => {
-    setState((prev) => ({ ...prev, focus: e.target.bankName }));
+    setState((prev) => ({ ...prev, focus: e.target.name }));
   };
 
   const token = localStorage.getItem("authToken");
-
   const handleSubmitForm = (e) => {
-    e.preventDefault(); // This prevents the form from reloading the page
-    addBankInfo(state, token);
+    e.preventDefault();
+    if (code === 404) addBankInfo(state, token);
+    else updateBankInfo(state, token);
+    setCode(200);
   };
 
   return (
@@ -39,6 +51,7 @@ const CreditCardForm = () => {
               name="iban"
               className="form-control"
               placeholder="IBAN"
+              value={state.iban}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
             />
@@ -50,6 +63,7 @@ const CreditCardForm = () => {
               name="bankName"
               className="form-control"
               placeholder="Bank Name"
+              value={state.bankName}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
             />
@@ -61,6 +75,7 @@ const CreditCardForm = () => {
               name="fullName"
               className="form-control"
               placeholder="Full Name"
+              value={state.fullName}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
             />
@@ -72,13 +87,16 @@ const CreditCardForm = () => {
               name="swiftCode"
               className="form-control"
               placeholder="Swift Code"
+              value={state.swiftCode}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
             />
           </div>
 
           <div className="d-grid">
-            <button className="btn btn-dark">Confirm</button>
+            <button className="btn btn-dark">
+              {code === 404 ? "Save" : "Update"}
+            </button>
           </div>
         </form>
         {error}
