@@ -10,7 +10,7 @@ const UsersPage = () => {
   const token = localStorage.getItem("authToken");
 
   useEffect(() => {
-    getUsers({}, token, currentPage);
+    getUsers({ role: "Client" }, token, currentPage);
   }, []);
   useEffect(() => {
     getUsers({}, token, currentPage);

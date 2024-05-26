@@ -64,8 +64,13 @@ const CreateAccount = () => {
   return (
     <div className="create-account-form mainPage">
       <h2>Add User</h2>
-      <form onSubmit={handleSubmit} className="col-10 flex flex-column align-items-center">
-        {errorMessage && <div className="error-message text-danger col-12">{errorMessage}</div>}
+      <form
+        onSubmit={handleSubmit}
+        className="col-10 flex flex-column align-items-center"
+      >
+        {errorMessage && (
+          <div className="error-message text-danger col-12">{errorMessage}</div>
+        )}
         {fieldErrors.length > 0 && (
           <ul className="error-list col-10">
             {fieldErrors.map((error, index) => (
@@ -75,7 +80,11 @@ const CreateAccount = () => {
             ))}
           </ul>
         )}
-        {successMessage && <div className="success-message text-success col-12">{successMessage}</div>}
+        {successMessage && (
+          <div className="success-message text-success col-12">
+            {successMessage}
+          </div>
+        )}
 
         <div className="col-12">
           <div className="col-10">
@@ -142,7 +151,7 @@ const CreateAccount = () => {
             <label>Role:</label>
             <select name="role" value={formData.role} onChange={handleChange}>
               <option value="Client">User</option>
-              <option value="SuperAdmin">Super Admin</option>
+              <option value="Admin">Admin</option>
             </select>
           </div>
         </div>
