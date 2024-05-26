@@ -12,7 +12,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       onPageChange(currentPage - 1);
     }
   };
-
+  if(totalPages === 1) return;
   return (
     <div className="pagination">
       <button onClick={handlePreviousPage} disabled={currentPage === 1}>

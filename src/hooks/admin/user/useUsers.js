@@ -3,16 +3,16 @@ import APIClient from "../../../services/api-service";
 
 const apiClient = new APIClient("/users");
 
-const usePendingUsers = () => {
+const useUsers = () => {
   const [error, setError] = useState("");
   const [data, setData] = useState([]);
   const [success, setSuccess] = useState(false);
   const [totalPages, setTotalPages] = useState();
 
-  const getPendingUsers = async (token, pageNumber = 1, pageSize = 10) => {
+  const getUsers = async (params, token, pageNumber = 1, pageSize = 10) => {
     try {
       const res = await apiClient.get(
-        { pageNumber, pageSize, status: "Pending" },
+        { ...params, pageNumber, pageSize },
         token
       );
 
@@ -30,11 +30,11 @@ const usePendingUsers = () => {
   };
   return {
     data,
-    getPendingUsers,
+    getUsers,
     success,
     error,
     totalPages,
   };
 };
 
-export default usePendingUsers;
+export default useUsers;

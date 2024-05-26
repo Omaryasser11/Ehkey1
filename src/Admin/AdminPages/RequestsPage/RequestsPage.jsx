@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./RequestsPage.scss"; // Import SCSS file for styling
-import usePendingUsers from "../../../hooks/admin/user/usePendingUsers";
 import Pagination from "../../CompentsAdmin/Pagination/Pagination";
 import useUpdateAccountStatus from "../../../hooks/admin/user/useUpdateAccountStatus";
+import useUsers from "../../../hooks/admin/user/useUsers";
 
 const RequestsPage = () => {
-  const { getPendingUsers, data, totalPages } = usePendingUsers();
+  const { getUsers, data, totalPages } = useUsers();
   const { updateAccountStatus, success } = useUpdateAccountStatus();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +14,7 @@ const RequestsPage = () => {
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    getPendingUsers(token, currentPage);
+    getUsers({ status: "Pending" }, token, currentPage);
   }, [currentPage]);
 
   useEffect(() => {
