@@ -124,6 +124,7 @@
     font-style: normal;
     color: #062d1f;
     font-size: 15px;
+    width: 100%;
 }
 
 .Cline {
@@ -287,12 +288,12 @@ a {
             flex-direction: row;
             flex-wrap: nowrap;
             align-content: center;
-            justify-content: flex-end;
+            justify-content: space-around;
             align-items: center;
             margin-left: .75rem;
 
             .Auth {
-                width: 62%;
+                width: 68%;
             }
 
             .welcome {
