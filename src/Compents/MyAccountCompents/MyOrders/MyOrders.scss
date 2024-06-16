@@ -11,12 +11,21 @@
     padding: 10px;
     border: 1px solid #ccc;
     font-size: 1.25rem;
+
 }
 
+.myOrdes-table td {
+    font-family: "Inconsolata", monospace;
+    font-weight: 400;
+}
+
+
+
 .myOrdes-table th {
-    background-color: #f2f2f2;
     font-weight: bold;
     text-align: left;
+    background-color: #25634c;
+    color: white;
 
 
 }
@@ -32,6 +41,12 @@
 .A11 {
     font-size: 1.25rem;
     color: #06291c;
+    background-color: #25634c;
+    width: 70%;
+    text-align: center;
+    color: white;
+    padding: .25rem;
+    font-family: "Inconsolata", monospace;
 }
 
 .Myorder .M0 {
@@ -54,3 +69,4 @@
     width: 100%;
     text-align: right;
 }
+

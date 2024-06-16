@@ -1,4 +1,3 @@
-
 .payment-title {
     width: 100%;
     text-align: center;
@@ -34,7 +33,7 @@
     grid-column-gap: 10px;
     grid-template-columns: auto auto;
     grid-template-rows: 90px 90px 90px;
-    grid-template-areas: "name name""number number""expiration security";
+    grid-template-areas: "name name" "number number" "expiration security";
     max-width: 400px;
     padding: 20px;
     color: #707070;
@@ -97,7 +96,7 @@ input {
     border-radius: 22px;
 }
 
-#generatecard{
+#generatecard {
     cursor: pointer;
     float: right;
     font-size: 12px;
@@ -106,7 +105,7 @@ input {
     background-color: #909090;
     border-radius: 4px;
     cursor: pointer;
-    float:right;
+    float: right;
 }
 
 /* CHANGEABLE CARD ELEMENTS */
@@ -333,4 +332,22 @@ input {
 .creditcard.flipped {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+
+.flex .btn {
+    background-color: #25634c;
+    color: white;
+}
+
+.form-control {
+    width: 80%;
+}
+
+form .flexR label {
+    font-family: "Fjalla One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    font-size: 1rem;
+    color: #25634c;
 }

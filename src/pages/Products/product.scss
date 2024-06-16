@@ -75,3 +75,9 @@
     color: #25634c;
 
 }
+
+@media screen and (min-width: 100px) and (max-width: 780px) {
+    .product{
+        width: 85%;
+    }
+}

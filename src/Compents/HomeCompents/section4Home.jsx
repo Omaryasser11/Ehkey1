@@ -16,7 +16,7 @@ function Section10Home() {
         <section className="col-12 section10">
             <div className="col-12 main2">
                 <div className="col-10 one">
-                    <h1 data-aos='fade-left'>Our Services</h1>
+                    <h1 data-aos='fade-left'>Our Packges</h1>
                     <p className="col-12 p1" data-aos="fade-right">
                         "Empowering growth, creating solutions, exceeding expectations."
 
@@ -24,13 +24,13 @@ function Section10Home() {
                 </div>
                 <div className="col-9 two">
                     <div className="col-4 card" data-aos="fade-right" data-aos-duration='1500'>
-                        <img src={one} alt="" />
+                        <img className='two2' src={one} alt="" />
                         <p>Golden Package</p>
                         <span>We Provide One Session <br /> .</span>
                         <Link className='btn' to="Services">Add to Cart</Link>
                     </div>
                     <div className="col-4 card" data-aos="fade-down" data-aos-duration='1500' >
-                        <img src={Two} alt="" />
+                        <img className='two2' src={Two} alt="" />
                         <p>Sliver Package</p>
                         <span>We Provide Five Session Plus Two Seesion Free</span>
                         <Link className='btn' to="Services">Add to Cart</Link>

@@ -9,9 +9,14 @@ const useGetPayments = () => {
   const [success, setSuccess] = useState(false);
   const [totalPages, setTotalPages] = useState();
 
-  const getPayments = async (token, pageNumber = 1, pageSize = 10) => {
+  const getPayments = async (token, pageNumber = 1, pageSize = 100, fromDate = null, toDate = null) => {
     try {
-      const res = await apiClient.get({ pageNumber, pageSize }, token);
+      // Construct the query parameters object
+      const queryParams = { pageNumber, pageSize };
+      if (fromDate) queryParams.fromDate = fromDate;
+      if (toDate) queryParams.toDate = toDate;
+
+      const res = await apiClient.get(queryParams, token);
 
       setError("");
       setSuccess(true);
@@ -25,6 +30,7 @@ const useGetPayments = () => {
       console.log("error", error);
     }
   };
+
   return {
     data,
     getPayments,

@@ -151,7 +151,9 @@ const CreateAccount = () => {
             <label>Role:</label>
             <select name="role" value={formData.role} onChange={handleChange}>
               <option value="Client">User</option>
-              <option value="Admin">Admin</option>
+              <option value="SuperAdmin">Super Admin</option>
+              <option value="financeAdmin">Finance Admin</option>
+              <option value="operationAdmin">Operation Admin</option>
             </select>
           </div>
         </div>

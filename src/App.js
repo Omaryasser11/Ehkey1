@@ -13,8 +13,8 @@ import SignUp from "./pages/LoginPage/SignUp";
 import NavBar from "./Compents/NavBar/NavBar";
 import Footer from "./Compents/Footer/Footer";
 import Navcol from "./Admin/Navcol/Navcol";
-import TopBar from "./Admin/TopBar/TopBar";
-import Admin2 from "./Admin/FienenceAdmin/Admin2";
+// import TopBar from "./Admin/TopBar/TopBar";
+// import Admin2 from "./Admin/FienenceAdmin/Admin2";
 import FormPage from "./pages/Form";
 import Erorr404 from "./Erorr/Erorr404";
 import HomeAdmin from "./Admin/AdminPages/HomeAdmin/HomeAdmin";
@@ -30,6 +30,8 @@ import ItemCardPage from "./Admin/AdminPages/PakageDetails/ItemCardPage";
 import TimeSlotPage from "./Admin/AdminPages/TimeSlotsPage/TimeSlotsPage";
 import UserVerifiedPage from "./Admin/AdminPages/UserVerify/UserVerifiedPage";
 import UsersPage from "./Admin/AdminPages/UsersList/UsersPage";
+import FienenceAdmin from "./Admin/AdminPages/UsersList/FinanceList.jsx";
+import OpreationAdmin from "./Admin/AdminPages/UsersList/OpreationList.jsx";
 import ForgotPasswordForm from "./pages/ResetPassword/ForgetPassword";
 import OTP from "./pages/ResetPassword/EnterOTP";
 import BasicInfoPage from "./Compents/MyAccountCompents/BasicInfoPage/BasicInfoPage";
@@ -38,6 +40,11 @@ import RequireAuth from "./store/RequireAuth";
 import ProductPage from "./pages/Products/ProudactPage";
 import CARTO from "./pages/Products/CART/cartPage";
 import CreateAccount from "./Admin/AdminPages/CreateAccont/CreateAccount.jsx";
+import ExportPdf from "./Pdf/ExportPdf.jsx"
+import Spiner from "./Spinner/Spinner.jsx";
+
+
+
 function App() {
   return (
     <RecoilRoot>
@@ -80,18 +87,11 @@ function App() {
                 <Route path="form" element={<FormPage />} />
                 <Route path="SignUp" element={<SignUp />} />
                 <Route path="login" element={<LoginPage />} />
+                <Route path="Spinner" element={<Spiner />} />
                 <Route path="/Cart2" element={<CARTO />} />
               </Route>
               <Route path="Admin*" element={<NoNavBarFooterRoutes />} />
-              <Route
-                path="SA*"
-                element={
-                  <RequireAuth>
-                    {" "}
-                    <NoNavBarFooterRoutes2 />
-                  </RequireAuth>
-                }
-              />
+              <Route path="SA*" element={<RequireAuth>{" "} <NoNavBarFooterRoutes2 /></RequireAuth>} />
               <Route path="*" element={<Erorr404 />} />
               <Route path="Forget" element={<ForgotPasswordForm />} />
               <Route path="EnterOTP" element={<OTP />} />
@@ -137,6 +137,8 @@ function NoNavBarFooterRoutes2() {
           <Route path="H2" element={<P2 />} />
           <Route path="PakageDetails" element={<ItemCardPage />} />
           <Route path="UsersPage" element={<UsersPage />} />
+          <Route path="FienenceAdmin" element={<FienenceAdmin />} />
+          <Route path="OpreationAdmin" element={<OpreationAdmin />} />
           <Route path="UserVerified" element={<UserVerifiedPage />} />
           <Route path="Slots" element={<TimeSlotPage />} />
           <Route path="Message" element={<MessagePage />} />
@@ -145,7 +147,7 @@ function NoNavBarFooterRoutes2() {
           <Route path="Requests" element={<RequestsPage />} />
           <Route path="*" element={<Erorr404 />} />
           <Route path="CustomerBill" element={<CustomerBill />} />
-
+          <Route path="CreateAccount" element={<CreateAccount />} />
           {/* <Route index element={<HomeAdmin />} /> */}
         </Routes>
       </div>

@@ -1,31 +1,25 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useSetRecoilState, useRecoilValue } from "recoil";
-import { loggedInState, usernameState } from "../../store/index.js";
-import appLogo from "../../assets/logo-light.png";
-import axios from "axios"; // Import Axios for making HTTP requests
 import TextField from "@mui/material/TextField";
 import "./index.scss";
 import { useAuth } from "../../store/auth";
+import useLogin from "../../hooks/account/useLogin"; // Import useLogin hook
+import appLogo from "../../assets/icon.png";
+
 const LoginForm = () => {
   const { login1 } = useAuth();
-
-  //    const auth = useAuth()
   const location = useLocation();
   const navigate = useNavigate();
-  // const redirectpath = location.state?.path || "/"
   const redirectPath = location.state?.from?.pathname || "/";
+  const { login, error } = useLogin(); // Use the useLogin hook
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
   const [errors, setErrors] = useState({});
   const [loginError, setLoginError] = useState("");
-
-  const setLoggedIn = useSetRecoilState(loggedInState);
-  const isLoggedIn = useRecoilValue(loggedInState);
-  const setUsernameState = useSetRecoilState(usernameState);
-  console.log("isLogged (before login):", isLoggedIn ? "true" : "false"); // Print before login
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,38 +34,30 @@ const LoginForm = () => {
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await axios.post(
-          "https://www.ehkey.com/api/account/login",
-          {
-            email: formData.email,
-            password: formData.password,
+        const { success, data, error } = await login({
+          email: formData.email,
+          password: formData.password,
+        });
+
+        if (success) {
+          const { token, name, role } = data;
+          localStorage.setItem("authToken", token);
+          localStorage.setItem("user", name);
+          localStorage.setItem("role", role);
+
+          login1(token, name);
+
+          if (role === "SuperAdmin" || role === "FinanceAdmin" || role === "OperationAdmin") {
+            navigate("/SA");
+          } else {
+            navigate(redirectPath);
           }
-        );
-
-        // Assuming the backend returns some form of authentication token upon successful login
-        const authToken = response.data.token;
-        const userName = response.data.name;
-
-        // Store authToken in local storage or session storage for subsequent requests
-        localStorage.setItem("authToken", authToken);
-        localStorage.setItem("user", userName);
-        // Set loggedIn to true
-        setLoggedIn(true);
-
-        // Set username state
-        setUsernameState(formData.email);
-        // auth.login(userName)
-        login1(authToken, userName);
-
-        console.log("isLogged (after login):", isLoggedIn ? "true" : "false"); // Print after login
-        console.log("Login successful!");
-
-        // Redirect to homepage
-        if (response.data.role === "SuperAdmin" || response.data.role === "Admin")
-          navigate("/SA", { replace: true });
-        else navigate(redirectPath, { replace: true });
+        } else {
+          setLoginError(error || "An error occurred during login");
+        }
       } catch (error) {
-        setLoginError("Incorrect email or password");
+        console.error("Login error:", error);
+        setLoginError("An error occurred during login");
       }
     } else {
       setErrors(validationErrors);
@@ -97,16 +83,13 @@ const LoginForm = () => {
         <div className="col-12 col-md-7" id="imageSection">
           <div className="filter">
             <div className="col-12">
-              <img src={appLogo} alt="App Logo" />
+              <img className="LogoLogin" src={appLogo} alt="App Logo" />
             </div>
             <div className="col-12" id="mainContent">
               <h1 className="col-12">Welcome back!</h1>
               <p className="col-12">
                 Get access to your Orders, Wishlist and Recommendations.
               </p>
-              <div className="col-4">
-                <p>Watch demo</p>
-              </div>
             </div>
           </div>
         </div>
@@ -126,6 +109,7 @@ const LoginForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
+                value={formData.email}
                 onChange={handleChange}
               />
               {errors.email && (
@@ -141,6 +125,7 @@ const LoginForm = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
+                value={formData.password}
                 onChange={handleChange}
               />
               {errors.password && (

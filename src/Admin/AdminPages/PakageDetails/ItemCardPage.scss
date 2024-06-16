@@ -5,6 +5,7 @@
 
     h1 {
         text-align: center;
+        font-size: 46px;
     }
 
     .item-form {
@@ -39,17 +40,6 @@
         }
     }
 
-    .item-list {
-        display: flex;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 29px;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-    }
-
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 
@@ -79,7 +69,7 @@
         button {
             width: 100%;
             padding: 5px;
-            background-color: #dc3545;
+            background-color: #0c5c3f;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -87,7 +77,52 @@
         }
 
         button:hover {
-            background-color: #c82333;
+            background-color: #caf0de;
+            color: #0c5c3f;
         }
     }
+}
+
+
+
+.item-card-page .item-list {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 27px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.item-card-page .item-card .item-details h3 {
+    margin-bottom: 5px;
+    color: #0c5c3f;
+    font-weight: 600;
+}
+
+.item-card-page .item-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 20%;
+    height: 215px;
+}
+
+.item-card-page .item-form {
+    /* margin-bottom: 20px; */
+    text-align: center;
+    width: 85%;
+    padding: 2rem;
+    background-color: #d3ffee;
+}
+
+.item-card-page .item-form form button {
+    padding: 5px 10px;
+    background-color: #34906e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }

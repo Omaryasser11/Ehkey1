@@ -36,20 +36,21 @@ export default function Footer() {
 
                 <div className='RightMain col-8'>
                     <div className=' colu col-12'>
-                        <span>Home</span>
-                        <span>About Us</span>
-                        <span>Contact Us</span>
-                        <span>Services </span>
-                        <span>Policy And Privacy</span>
+                        <Link className='a' to="/">   <span>Home</span></Link>
+                        <Link to="/AboutUs">      <span>About Us</span></Link>
+                        <Link to="/ContactUs">  <span>Contact Us</span></Link>
+                        <Link to="/Services">   <span>Packages </span></Link>
+                        <Link to="/Packages">   <span>Booking </span></Link>
+                        <Link to="/PolicyAndPrivacy">  <span>Policy And Privacy</span></Link>
                     </div>
-                    <div className=' coluIcon col-7 '>
+                    {/* <div className=' coluIcon col-7 '>
                         <h5>Follow Us</h5>
                         <FontAwesomeIcon className='I22' icon={faFacebook} />
                         <FontAwesomeIcon className='I22' icon={faInstagramSquare} />
                         <FontAwesomeIcon className='I22' icon={faXTwitter} />
                         <FontAwesomeIcon className='I22' icon={faLinkedin} />
                         <FontAwesomeIcon className='I22' icon={faTiktok} />
-                    </div>
+                    </div> */}
                 </div>
                 <div className='MiddleQr col-2'>
                     <img src={Qr} />
@@ -63,11 +64,11 @@ export default function Footer() {
             <div className='line col-12'></div>
             <div className='bottomDiv col-11'>
                 <div className='leftBottom'>
-                    <p>© 2024 Ehaky. All Rights Reserved</p>
+                    <p>©All Rights Reserved @2024 Three angles portal services</p>
 
                 </div>
                 <div className='rightBottom '>
-                    <p>Privacy Policy and Terms of Use | Do Not Sell or Share My Personal Information</p>
+                    <p>| Do Not Sell or Share My Personal Information</p>
 
                 </div>
             </div>

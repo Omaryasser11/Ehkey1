@@ -1,6 +1,5 @@
 #section1 {
-  margin-top: 4rem;
-  height: 60vh;
+  height: 54vh;
   background-color: #25634Cff;
   display: flex;
   flex-direction: row;
@@ -22,7 +21,6 @@
   .landing {
     padding: 1rem;
     display: flex;
-    height: 19.7rem;
     border-radius: 5rem 0 0 5rem;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -30,6 +28,7 @@
     justify-content: center;
     align-items: center;
     border: solid 1px white;
+    height: 88%;
   }
 
   p {
@@ -111,6 +110,7 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+    height: 90%;
 
   }
 
@@ -147,11 +147,47 @@
 
 
 // Mobile styles
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
 
+  #section1 {
+    // height: 100vh;
+    background-color: #25634c;
+    font-family: "Anton", sans-serif;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+  }
 
-// Tablet styles
-@media screen and (min-width: 768px) and (max-width: 1199px) {}
+  #section1 .landing {
+    padding: 1rem;
+    display: flex;
+    border-radius: 5rem 5rem 0 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px white;
+    height: 45%;
+    width: 85%;
+  }
 
-// Desktop styles
-@media screen and (min-width: 1200px) {}
+  #section1 .videoPkg {
+    height: 45%;
+    width: 87%;
+  }
+  #section1 .VideoLand {
+    border-radius: 0 0 5rem 5rem;
+  }
+}
+
+  // Tablet styles
+  @media screen and (min-width: 768px) and (max-width: 1199px) {}
+
+  // Desktop styles
+  @media screen and (min-width: 1200px) {}

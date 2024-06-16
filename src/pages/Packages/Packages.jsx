@@ -21,15 +21,14 @@ export default function Packages() {
         </button>
         <button
           onClick={() => handleSectionClick("mySession")}
-          className={`btn ${
-            activeSection === "mySession" ? "clicked" : "Mbtn"
-          } `}
+          className={`btn ${activeSection === "mySession" ? "clicked" : "Mbtn"
+            } `}
         >
           My sessions
         </button>
       </div>
       <div className=" col-10 mainL">
-        {activeSection === "Book" && <AppointmentBooking />},
+        {activeSection === "Book" && <AppointmentBooking />}
         {activeSection === "mySession" && <MySession />}
       </div>
     </section>

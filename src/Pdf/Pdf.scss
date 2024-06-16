@@ -1,0 +1,35 @@
+/* src/ProductTablePDF.css */
+.pdf-header {
+    text-align: center;
+    margin-bottom: 1cm;
+  }
+  
+  .pdf-footer {
+    text-align: center;
+    margin-top: 1cm;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1cm;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .pdf-container {
+    display: none; /* Hide the content from the UI as it's only needed for PDF generation */
+  }
+  
+  .k-button {
+    margin-top: 10px;
+  }
+  
+  .k-checkbox-label {
+    margin-left: 5px;
+  }
+  

@@ -53,21 +53,23 @@ export default function NavBar() {
         };
     }, [showMenu]);
     return (
-        <div className="NavBar1 col-12">
+        <div className="NavBar111 col-12">
             <div className='Lift'>
                 <div className='Icon'>
-                    <img src={Icon} />
+                    <Link to={'/'}>
+                        <img src={Icon} />
+                    </Link>
                 </div>
 
                 {
                     showMenu === true && (
-                        <div className={`Menu ${showMenu ? 'active' : ''}`} ref={menuRef}>           
+                        <div className={`Menu ${showMenu ? 'active' : ''}`} ref={menuRef}>
                             <Link className="m-3" to="/">Home</Link>
-                            <Link className="m-3" to="/Services">Services</Link>
+                            <Link className="m-3" to="/Services">Packages</Link>
                             <Link className="m-3" to="/AboutUs">About Us </Link>
                             <Link className="m-3" to="/ContactUs">Contact Us </Link>
                             <Link className="m-3" to="/PolicyAndPrivacy">Policy And Privacy</Link>
-                            <Link className="m-3" to="/Packages">Packages </Link>
+                            <Link className="m-3" to="/Packages">Booking </Link>
                         </div>
                     )
 
@@ -78,11 +80,11 @@ export default function NavBar() {
                     (
                         <div className='Links'>
                             <Link className="m-3" to="/">Home</Link>
-                            <Link className="m-3" to="/Services">Services</Link>
+                            <Link className="m-3" to="/Services">Packages</Link>
                             <Link className="m-3" to="/AboutUs">About Us </Link>
                             <Link className="m-3" to="/ContactUs">Contact Us </Link>
                             <Link className="m-3" to="/PolicyAndPrivacy">Policy And Privacy</Link>
-                            <Link className="m-3" to="/Packages">Packages </Link>
+                            <Link className="m-3" to="/Packages">Booking </Link>
                         </div>
                     )
                 }
@@ -126,6 +128,7 @@ export default function NavBar() {
                 </div>
             </div>
             <div className="navbar-toggle">
+
                 <button onClick={toggleMenu} className="toggle-button">
                     <div className="bar"></div>
                     <div className="bar"></div>

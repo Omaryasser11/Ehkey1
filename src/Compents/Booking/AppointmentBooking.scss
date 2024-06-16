@@ -16,6 +16,14 @@
   h2 {
     text-align: center;
   }
+  h1, .H1 {
+    font-weight: 600;
+    font-size: 30px;
+    color: #1b513d;
+    text-align: center;
+    font-family: "Exo 2", sans-serif;
+    margin-bottom: 2rem;
+}a
 
   .date-picker {
     display: flex;
@@ -118,7 +126,7 @@
     cursor: pointer;
 
     &.selected {
-      background-color:#25634c;
+      background-color: #25634c;
       color: #fff;
     }
   }
@@ -141,9 +149,24 @@
   color: #25634c;
 
 }
+
 .maino .appointment-booking-L .p {
   font-size: 1.1rem;
   font-weight: 600;
   color: #25634c;
 
+}
+
+@media screen and (min-width: 100px) and (max-width: 780px) {
+  .mainL {
+    width: 100%;
+  }
+
+  .appointment-booking .date-picker {
+    width: 100%;
+  }
+
+  .Add {
+    width: 50%;
+  }
 }

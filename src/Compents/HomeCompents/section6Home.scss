@@ -23,7 +23,7 @@
     color: #25634c;
 
     h1 {
-        max-width: 60%;
+    
         font-family: 'Exo 2', sans-serif;
         font-size: 24px;
         font-weight: 700;
@@ -130,4 +130,21 @@
     margin-bottom: 5px;
     width: 100%;
     text-align: center;
+}
+
+
+// Mobile styles
+@media screen and (max-width: 767px) {
+    
+    .title h1 {
+        width: 85%;
+    }
+    .rtrt{
+        flex-direction: column;
+    }
+    .rtrt .card {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
 }

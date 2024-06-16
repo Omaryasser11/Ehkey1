@@ -3,7 +3,7 @@ import AppointmentBooking from "../Booking/AppointmentBooking";
 import useGetUserSessions from "../../hooks/sessions/useGetUserSessions";
 import { useEffect } from "react";
 import formatDate from "../../services/formatDate";
-
+import "./MySession.scss"
 const MySession = () => {
   const [showOrders, setShowOrders] = useState(false);
   const { getUserSessions, sessions } = useGetUserSessions();
@@ -23,14 +23,14 @@ const MySession = () => {
       return <AppointmentBooking id={selectedId} onClose={toggleShowOrders} />;
     } else {
       return (
-        <div className="my-session mainPage col-12">
-          <h1>My Session</h1>
+        <div className="my-session col-12">
+          <h2>My Session</h2>
           <table className="transaction-table">
             <thead>
               <tr>
                 <th>Session ID</th>
-                <th>Start Time</th>
-                <th>End Time</th>
+                <th className="dateTi">Start Time</th>
+                <th className="dateTi">End Time</th>
                 <th>Status</th>
                 <th>Change</th>
               </tr>
@@ -45,7 +45,7 @@ const MySession = () => {
                     <td>{transaction.status}</td>
                     <td>
                       {transaction.status === "Scheduled" && (
-                        <button
+                        <button className="btnT"
                           onClick={() => toggleShowOrders(transaction.id)}
                         >
                           Change Time

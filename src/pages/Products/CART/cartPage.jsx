@@ -22,7 +22,7 @@ const CartPage = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-
+  const [TotalFee, setTotalFee] = useState(0);
   useEffect(() => {
     getCartItems(token);
   }, []);
@@ -44,6 +44,13 @@ const CartPage = () => {
           .reduce((sum, item) => sum + item.quantity * item.package.price, 0)
           .toFixed(2)
       );
+
+      setTotalFee(
+        cartItems
+          .reduce((sum, item) => sum + item.quantity * (item.package.price / item.package.feeRate), 0)
+          .toFixed(2)
+      );
+
     }
   }, [cartItems]);
   useEffect(() => {
@@ -73,6 +80,8 @@ const CartPage = () => {
     );
   }
 
+  const totalPFee = (Number(TotalFee) + Number(totalAmount)).toFixed(2);
+
   return (
     <>
       <section className="cart col-12">
@@ -92,7 +101,7 @@ const CartPage = () => {
                     {/* <th className=' iDetails'>Details</th> */}
                     <th className="iPrice Font">Price</th>
                     <th className="iQuantity Font">Quantity</th>
-
+     
                     <th className=" iTotal Font">Total</th>
                     <th className="iRemove Font">Remove</th>
                   </tr>
@@ -129,8 +138,9 @@ const CartPage = () => {
                             </button>
                           </div>
                         </td>
+                
                         <td className="iTotal">
-                          ${(item.quantity * item.package.price).toFixed(2)}
+                          ${((item.quantity) * ((item.package.price) + ((item.package.price) / (item.package.feeRate)))).toFixed(2)}
                         </td>
                         <td className=" iRemove">
                           <FontAwesomeIcon
@@ -162,6 +172,13 @@ const CartPage = () => {
                     <th className="Summaryborder">Total Items Type</th>
                     <td className="TD">{totalProducts}</td>
                   </tr>
+    
+
+                  <tr className="col-10 Summary">
+                    <th className="Summaryborder">Total Amount</th>
+                    <td className="TD">${totalPFee}</td>
+                  </tr>
+
                   {/* <tr className="col-10 Summary">
                     <th className="Summaryborder">Total Amount </th>
                     <td className="TD">{totalAmount}</td>
@@ -169,10 +186,15 @@ const CartPage = () => {
                 </table>
               </div>
               <div className="Checkout">
-                <span className="A">Total Amount</span>
+                {/* <span className="A">Total </span>
                 <span className="A">${totalAmount}</span>
+                <span className="A">Total fee</span>
+                <span className="A">${TotalFee}</span> */}
+                <span className="A">Total Amount</span>
+                <span className="A">${totalPFee}</span>
+
               </div>
-              <button className="col-12 btn1" onClick={handleCheckout}>
+              <button className="col-12   checkout-btn " onClick={handleCheckout}>
                 CheckOut
               </button>
               <p>

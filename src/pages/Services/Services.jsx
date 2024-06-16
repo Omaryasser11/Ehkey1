@@ -1,10 +1,14 @@
+// Services.js
+
 import React, { useEffect, useState } from 'react';
 import "./Services.scss";
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { productListState, cartState } from '../../store/index';
 import Product from '../Products/Product';
-import axios from 'axios';
+import APIClient from '../../services/api-service'; // Adjust the path as per your project structure
+
+const client = new APIClient('/packages'); // Specify the endpoint for packages
 
 function Services() {
     const [productList, setProductList] = useRecoilState(productListState);
@@ -26,8 +30,8 @@ function Services() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://www.ehkey.com/api/packages'); // Replace with your API endpoint
-                setProductList(response.data);
+                const response = await client.get(); // Use the client to fetch data
+                setProductList(response); // Assuming response.data is the array of products
                 setLoading(false);
             } catch (err) {
                 setError(err.message);

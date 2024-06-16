@@ -4,58 +4,47 @@ import './ObjectPolicyPrivacyPage.scss';
 const ObjectPolicyPrivacyPage = () => {
   return (
     <div className="object-policy-privacy-page">
-      <h1>Object Policy and Privacy</h1>
-      <p>
-        Welcome to our Object Policy and Privacy page. At our company, we take
-        the privacy and security of your data very seriously. Below, you'll
-        find information about how we handle your personal information and our
-        policies regarding data protection.
-      </p>
-      <h2>Data Collection</h2>
-      <p>
-        We collect personal information for specific purposes, such as providing
-        services to you, improving our products, and complying with legal
-        obligations. We only collect information that is necessary and relevant
-        for these purposes.
-      </p>
-      <h2>Data Usage</h2>
-      <p>
-        Your personal information may be used for various purposes, including
-        but not limited to:
-      </p>
-      <ul>
-        <li>Providing you with the products and services you requested.</li>
-        <li>Communicating with you about updates or changes to our services.</li>
-        <li>Improving our products and services based on your feedback.</li>
-        <li>Complying with legal and regulatory requirements.</li>
-      </ul>
-      <h2>Data Security</h2>
-      <p>
-        We have implemented appropriate technical and organizational measures to
-        protect your personal information against unauthorized access,
-        disclosure, alteration, or destruction. These measures include
-        encryption, access controls, and regular security audits.
-      </p>
-      <h2>Third-Party Disclosure</h2>
-      <p>
-        We do not sell, trade, or otherwise transfer your personal information
-        to third parties without your consent, except as required by law or as
-        necessary to provide you with our services. We may share your
-        information with trusted third parties who assist us in operating our
-        website, conducting our business, or servicing you, as long as those
-        parties agree to keep this information confidential.
-      </p>
-      <h2>Changes to this Policy</h2>
-      <p>
-        We reserve the right to update or change our Object Policy and Privacy
-        at any time. Any changes will be posted on this page, and the revised
-        policy will become effective immediately upon posting. We encourage you
-        to review this page periodically for any updates or changes.
-      </p>
-      <p>
-        If you have any questions or concerns about our Object Policy and
-        Privacy practices, please contact us.
-      </p>
+       <h1>Privacy Policy</h1>
+  
+    <p>Welcome to Ehkey, We value the privacy and confidentiality of your personal information and would like to clarify how we collect, use, and protect the information we obtain from you.</p>
+
+    <h2>Information We Collect</h2>
+    <p>When you register on our website and access the content, we may ask you to provide some personal information such as your name, email address, and payment information.</p>
+
+    <h2>How We Use the Information</h2>
+    <p>We use the information you provide to deliver and improve our services, ensure the security and safety of the website, and communicate with you regarding your account and our services. We will not sell or share your personal information with third parties without your consent.</p>
+
+    <h2>Access and Correction Rights</h2>
+    <p>You have the right to access the information we have collected about you and correct any errors in it. You can also request the deletion of your personal information from our records if necessary.</p>
+
+    <h2>Security</h2>
+    <p>We take appropriate security measures to protect your personal information from unauthorized access, use, modification, or disclosure.</p>
+
+    <h2>Refund Policy</h2>
+    <p>No refund for membership or competition fees.</p>
+    <p>Payment cards must be personal, and we are not responsible for payments made with third-party cards.</p>
+    <p>We adhere to all international laws criminalizing money laundering, and we are not responsible for the sources of the funds paid.</p>
+    <p>A banking policy of 3% of its package value is established with every purchase, and it is also deducted from the value of the financial prize upon transfer.</p>
+
+    <h2>Competition Terms</h2>
+    <p>The questions are scientific, and the required answers are the most accurate. All answers have been approved by accredited medical committees within the company.</p>
+    <p>The competition is for general knowledge and is not eligible for any scientific or academic certification whatsoever.</p>
+    <p>The winner must answer all questions within the specified period.</p>
+
+    <h2>Policy Modifications</h2>
+    <p>The company reserves the right to modify policies at any time without consulting subscribers.</p>
+
+    <h2>Unlimited Participation</h2>
+    <p>All subscribing members are entitled to unlimited participation in the challenge during their subscription period.</p>
+
+    <h2>Agreement</h2>
+    <p>By completing the payment process, you agree to the policies, terms, and conditions.</p>
+
+    <p>Thank you for choosing TwentyWin as part of your preparatory journey for medical fellowship exams.</p>
+
+    <footer>
+        <p><i>All Rights Reserved @2024 Three angles portal services</i></p>
+    </footer>
     </div>
   );
 };

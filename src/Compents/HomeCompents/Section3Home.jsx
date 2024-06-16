@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Section3Home.scss"
 import { Link } from 'react-router-dom'
-import Home3 from "../../assets/home3.png"
+// import Home3 from "../../assets/home3.png"
 export default function Section3Home() {
     return (
         <section className='section3 col-12'>
@@ -14,7 +14,7 @@ export default function Section3Home() {
                     <Link className='btn' to="AboutUs">Read More</Link>
                 </div>
                 <div className='col-6 Right'>
-                    <img src={Home3} alt="" />
+                    <div className='Img'></div>
 
                 </div>
             </div>

@@ -1,13 +1,4 @@
 .section1Contact {
-    background-color: #1B513Dff; //1
-    background-color: #25634c; //2
-    background-color: #2F755Cff; //3 
-    background-color: #39886Bff; //4
-    background-color: #429A7Aff; //5
-    background-color: #4CAC8Aff; //6
-    background-color: #56BE99ff; //7 
-    background-color: #39886Bff; //8
-
     background-color: #2F755Cff;
     background-color: white;
     padding-top: 85px;
@@ -55,7 +46,7 @@ textarea:valid~label {
     ;
 }
 
-.styled-input {
+.section1Contact .styled-input {
     float: left;
     width: 293px;
     margin: 1rem 0;
@@ -64,11 +55,6 @@ textarea:valid~label {
     color: #062d1f;
 }
 
-@media only screen and (max-width: 768px) {
-    .styled-input {
-        width: 100%;
-    }
-}
 
 .styled-input label {
     color: #999;
@@ -143,6 +129,35 @@ textarea:focus~span {
     box-shadow: 0px 0px 12px 1px rgb(7, 36, 26);
 }
 
+.section1Contact .container {
+    max-width: 90%;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+
+
+}
+
+.section1Contact .container input,
+textarea {
+    padding: 30px;
+    border: 0;
+    width: 100%;
+    font-size: 1rem;
+    background-color: #9feab6;
+    border-radius: 4px;
+    background-color: #d8f5e1;
+    color: #062d1f;
+    font-weight: 500;
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .styled-input {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .submit-btn {
         width: 100%;
@@ -199,4 +214,66 @@ textarea {
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 2rem;
+}
+
+// Mobile styles
+@media screen and (max-width: 767px) {
+
+    h1,
+    .H1 {
+        font-family: "Exo 2", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    h4,
+    .H4 {
+        font-family: "Roboto", sans-serif, "arial";
+        font-weight: 500;
+        font-size: 16px;
+        color: #25634c;
+        line-height: 1.5;
+    }
+
+    .section1Contact {
+        padding-top: 0;
+        flex-direction: column;
+    }
+
+    .section1Contact .container {
+        width: 85%;
+        max-width: 85%;
+        max-height: 100%;
+        padding: 20px;
+        height: auto;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 105%;
+    }
+
+    .left {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .col-md-6,
+    .col-sm-12,
+    .col-xs-12 {
+        width: 100%;
+    }
+
+    .btn-C {
+        width: 100%;
+    }
+
+    .section1Contact .styled-input {
+        width: 100%;
+    }
 }

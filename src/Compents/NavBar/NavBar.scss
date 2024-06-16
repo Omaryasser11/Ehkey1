@@ -1,4 +1,4 @@
-.NavBar1 {
+.NavBar111 {
     display: flex;
     background-color: #25634c;
     height: auto;
@@ -261,12 +261,68 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-    .Links {
+
+    .Lift .Links {
         display: none;
+    }
+
+    .Lift {
+
+        width: 25%;
+        height: 100%;
 
     }
 
+    .Icon {
+        height: 100%;
+        width: 100%;
+    }
+
+    .right {
+        width: 66%;
+
+        .Links {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: .75rem;
+
+            .Auth {
+                width: 62%;
+            }
+
+            .welcome {
+                font-size: 17px;
+            }
+
+            .Profile {
+                height: 3.5rem;
+                width: 3.5rem;
+                border-radius: .45rem;
+            }
+
+            .Profile .profileIcon {
+                font-size: 2.15rem;
+            }
+
+            svg {
+                font-size: 2.5rem;
+            }
+
+            .cart1 {
+                height: 3.5rem;
+                width: 3.5rem;
+                border-radius: .45rem;
+            }
+        }
+    }
+
     .Menu.active {
+
         width: 50%;
         /* display: none; */
         display: flex;
@@ -279,8 +335,7 @@ a {
         position: absolute;
         top: 11px;
         right: 5px;
-
-
+        z-index: 100;
 
         a:before {
             content: '';
@@ -303,10 +358,7 @@ a {
         }
     }
 
-    .Icon {
-        height: 100%;
-        width: 33%;
-    }
+
 
     /* Show the toggle button only for mobile size */
     .navbar-toggle {
@@ -317,6 +369,7 @@ a {
         max-height: 500px;
         /* Adjust this value as needed */
     }
+
     .Menu.active a {
         text-decoration: none;
         font-size: 17px;
@@ -331,9 +384,9 @@ a {
         background-clip: text;
         transition: all 0.3s ease-in-out;
         background-image: linear-gradient(to right,
-        #03531e,
-        #03531e, 50%,
-       white, 50%);
+                #03531e,
+                #03531e, 50%,
+                white, 50%);
     }
 
 }

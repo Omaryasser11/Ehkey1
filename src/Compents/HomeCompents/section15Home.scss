@@ -1,0 +1,111 @@
+.section15 {
+    background-color: transparent;
+    // background-position: center;
+    // background-size: cover;
+    width: 100%;
+    padding: 0;
+    height: 15rem;
+}
+
+.filter {
+    height: 100%;
+    background-color: rgb(234, 234, 234);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.main15 {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.s15card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    .I15 {
+
+        font-size: 65px;
+        color: white;
+        margin-bottom: 5px;
+        color: rgb(37 99 76);
+
+    }
+
+    .H3 {
+
+        font-size: 25px;
+        font-weight: 700;
+        color: white;
+        color: rgb(37 99 76);
+
+    }
+
+    .spano {
+        color: rgb(37 99 76);
+    }
+}
+
+.s15card:hover .I15 {
+    color: #042b1d;
+    transition: .25s;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .main15 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section15 {
+        padding: 0;
+    }
+
+    .main15 .s15card {
+        margin-bottom: 1.25rem;
+    }
+
+    .filter {
+        padding: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section15 {
+        padding: 0;
+    }
+
+    .main15 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main15 .s15card {
+        margin-bottom: 1.25rem;
+    }
+
+}

@@ -9,7 +9,8 @@
   justify-content: flex-start;
   align-items: center;
   height: auto;
-margin-top: 1rem;
+  margin-top: 1rem;
+  padding-top: 0;
 
   h1 {
     font-size: 1.5rem;
@@ -174,6 +175,10 @@ input:focus {
   .bowMiddle {
     background-color: whitesmoke;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+    img {
+      height: 5rem;
+    }
   }
 
   .clicked {
@@ -184,11 +189,56 @@ input:focus {
 
     .BoxIcon {
       font-size: 3rem;
+      height: 7rem;
     }
   }
 }
 
+.Divi {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  background: #d8f5e1;
+  align-items: center;
+  border-radius: 2rem;
+}
 
+.IMGEO {
+  img {
+    height: 30rem;
+  }
+}
+
+.Texto {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.titlo {
+  margin-bottom: 1rem;
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: #25634c;
+  text-align: left;
+}
+
+.contento {
+  max-width: 700px;
+  /* margin: 0 auto; */
+  font-size: 22px;
+  /* padding: 3rem; */
+  font-weight: 600;
+  text-align: left;
+  color: #25634c;
+}
 
 .iconInput {
   padding: 4px;
@@ -285,5 +335,33 @@ select {
     height: 20vh;
     width: 20vh;
 
+  }
+}
+
+.Boxes .clicked:hover {
+  background-color: #25634c;
+  color: white;
+
+  .BoxIcon:hover {
+    color: white;
+  }
+}
+
+// Mobile styles
+@media screen and (max-width: 767px) {
+  .section2 {
+    margin: 0;
+  }
+
+  .Boxes {
+    width: 85%;
+  }
+
+  .clicked {
+    font-size: 2rem;
+  }
+
+  .bowMiddle {
+    font-size: 1.5rem;
   }
 }

@@ -5,30 +5,44 @@ import useUpdateAccountStatus from "../../../hooks/admin/user/useUpdateAccountSt
 import useUsers from "../../../hooks/admin/user/useUsers";
 
 const RequestsPage = () => {
-  const { getUsers, data, totalPages } = useUsers();
+  const { getUsers, data: originalRequests, totalPages } = useUsers();
   const { updateAccountStatus, success } = useUpdateAccountStatus();
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
   const token = localStorage.getItem("authToken");
 
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
     getUsers({ status: "Pending" }, token, currentPage);
-  }, [currentPage]);
+  }, [token, currentPage]);
 
   useEffect(() => {
-    if (data) setRequests(data);
-  }, [data]);
+    if (originalRequests) setRequests(originalRequests);
+  }, [originalRequests]);
 
   const handleChangePage = (page) => setCurrentPage(page);
+  
+  // Filter requests based on search query
+  const filteredRequests = requests.filter(request => request.email.toLowerCase().includes(searchQuery.toLowerCase()));
+
   const handleApproveRequest = (id) => {
     updateAccountStatus({ status: "Active" }, token, id);
     setRequests(requests.filter((request) => request.id !== id));
   };
+
   return (
     <div className="requests-page mainPage col-12">
-      <h1>Requests</h1>
+      <h2>Requests</h2>
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by email"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
       <table className="requests-table">
         <thead>
           <tr>
@@ -40,22 +54,19 @@ const RequestsPage = () => {
           </tr>
         </thead>
         <tbody>
-          {requests &&
-            requests.map((request) => (
-              <tr key={request.id}>
-                <td>{request.name}</td>
-                <td>{request.email}</td>
-                <td>{request.phone}</td>
-                <td>{request.status}</td>
-                <td>
-                  {
-                    <button onClick={() => handleApproveRequest(request.id)}>
-                      Approve
-                    </button>
-                  }
-                </td>
-              </tr>
-            ))}
+          {filteredRequests.map((request) => (
+            <tr key={request.id}>
+              <td>{request.name}</td>
+              <td>{request.email}</td>
+              <td>{request.phone}</td>
+              <td>{request.status}</td>
+              <td>
+                <button className="ApproveBtn" onClick={() => handleApproveRequest(request.id)}>
+                  Approve
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <Pagination

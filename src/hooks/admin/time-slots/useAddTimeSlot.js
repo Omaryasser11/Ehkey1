@@ -1,7 +1,7 @@
 import { useState } from "react";
 import APIClient from "../../../services/api-service";
 
-const apiClient = new APIClient("/time-slots");
+const apiClient = new APIClient("/time-slots/interval");
 const useAddTimeSlot = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);

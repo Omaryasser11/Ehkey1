@@ -9,7 +9,7 @@ const useGetReservations = () => {
   const [success, setSuccess] = useState(false);
   const [totalPages, setTotalPages] = useState();
 
-  const getReservations = async (token, pageNumber = 1, pageSize = 5) => {
+  const getReservations = async (token, pageNumber = 1, pageSize = 10) => {
     try {
       const res = await apiClient.get({ pageNumber, pageSize }, token);
 

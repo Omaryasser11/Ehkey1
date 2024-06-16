@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import "./product.scss";
 import Swal from "sweetalert2";
-import { useRecoilState } from "recoil";
-import { cartState } from "../../store/index";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import useAddToCart from "../../hooks/cart/useAddToCart";
@@ -12,8 +10,18 @@ const Product = ({ product }) => {
   const { id, name, description, price, feeRate, sessions } = product;
 
   const token = localStorage.getItem("authToken");
+
   const handleAddToCart = () => {
-    addToCart({ packageId: id, quantity: 1 }, token);
+    if (token) {
+      addToCart({ packageId: id, quantity: 1 }, token);
+    }
+    else
+    Swal.fire({
+      title: "Your Not Loged",
+      text: "Please Login in First ",
+      icon: "question"
+    });
+    console.log("hhhh")
   };
 
   return (
@@ -26,7 +34,7 @@ const Product = ({ product }) => {
         <Stack spacing={1}>
           <Rating
             name="half-rating-read"
-            defaultValue={feeRate}
+            defaultValue={5}
             precision={0.25}
             readOnly
           />
@@ -45,7 +53,7 @@ const Product = ({ product }) => {
               </button>
             )}
           </div>
-        }
+}
       </div>
     </div>
   );

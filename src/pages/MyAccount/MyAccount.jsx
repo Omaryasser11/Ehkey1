@@ -9,6 +9,9 @@ import CreditCardPage from "../../Compents/MyAccountCompents/CreditCardPage/Cred
 import Swal from "sweetalert2";
 import MyOrders from "../../Compents/MyAccountCompents/MyOrders/MyOrders.jsx";
 import useRemoveAccount from "../../hooks/account/useRemoveAccount.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faIdBadge, faEnvelope, faUser, faSquarePhone, faEarthAmericas, faPenToSquare, faUserGroup, faWallet ,faFloppyDisk} from '@fortawesome/free-solid-svg-icons';
+
 export default function MyAccount() {
   const { data, getAccountData } = useAccountData();
   const { success, error, updateAccount } = useUpdateAccount();
@@ -64,6 +67,12 @@ export default function MyAccount() {
         phone: user.phone,
         country: user.country,
       };
+
+      Swal.fire({
+        title: "Sucess Jop!",
+        text: "Your Information Saved Sucessfully",
+        icon: "success"
+      });
       updateAccount(requestBody, token);
 
       setIsEditing(false);
@@ -113,7 +122,7 @@ export default function MyAccount() {
     <div className="MyAccount col-12 flex">
       <h2 className="col-10">MyAccount</h2>
       <div className="col-10 MainInfo3">
-        <div className="col-3 Lefto">
+        <div className=" Lefto">
           <span
             className="welcome col-9"
             style={{
@@ -126,42 +135,37 @@ export default function MyAccount() {
           </span>
           <button
             onClick={() => handleSectionClick("information")}
-            className={`Information ${
-              activeSection === "information" ? "clicked" : "Mbtn"
-            } col-9`}
+            className={`Information ${activeSection === "information" ? "clicked" : "Mbtn"
+              } col-9`}
           >
             My Information
           </button>
           <button
             onClick={() => handleSectionClick("myOrders")}
-            className={`Information ${
-              activeSection === "myOrders" ? "clicked5" : "Mbtn"
-            } col-9`}
+            className={`Information ${activeSection === "myOrders" ? "clicked5" : "Mbtn"
+              } col-9`}
           >
             My Orders
           </button>
           <button
             onClick={() => handleSectionClick("payment")}
-            className={`Information ${
-              activeSection === "payment" ? "clicked" : "Mbtn"
-            } col-9`}
+            className={`Information ${activeSection === "payment" ? "clicked" : "Mbtn"
+              } col-9`}
           >
             Payment Info
           </button>
 
           <button
             onClick={() => handleSectionClick("remove")}
-            className={`Information ${
-              activeSection === "remove" ? "clicked3" : "MbtnR"
-            } col-9`}
+            className={`Information ${activeSection === "remove" ? "clicked3" : "MbtnR"
+              } col-9`}
           >
             Remove My Account
           </button>
           <button
             onClick={handleLogout}
-            className={`Information ${
-              activeSection === "Logout" ? "clicked4" : "Mbtn"
-            } col-9`}
+            className={`Information ${activeSection === "Logout" ? "clicked4" : "Mbtn"
+              } col-9`}
           >
             Logout
           </button>
@@ -169,18 +173,18 @@ export default function MyAccount() {
         <div className="col-8 mainAcc">
           {activeSection === "information" && (
             <div className="user-profile col-12">
-              <table className="col-10">
+              <table className="col-8">
                 <tbody>
-                  <tr>
-                    <td>ID:</td>
+                  <tr className="col-12">
+                    <td className="flexRSB "> <FontAwesomeIcon className="TableIcon" icon={faIdBadge} />              <p className="col-7">ID</p></td>
                     <td>{user.id}</td>
                   </tr>
-                  <tr>
-                    <td>Email:</td>
+                  <tr className="col-12">
+                    <td className="flexRSB"><FontAwesomeIcon className="TableIcon" icon={faEnvelope} />              <p className="col-7">Email</p></td>
                     <td>{user.email}</td>
                   </tr>
-                  <tr>
-                    <td>First Name:</td>
+                  <tr className="col-12">
+                    <td className="flexRSB"><FontAwesomeIcon className="TableIcon" icon={faUser} />   <p className="col-7">First Name</p></td>
                     <td>
                       {isEditing ? (
                         <input
@@ -194,8 +198,8 @@ export default function MyAccount() {
                       )}
                     </td>
                   </tr>
-                  <tr>
-                    <td>Last Name:</td>
+                  <tr className="col-12">
+                    <td className="flexRSB"> <FontAwesomeIcon className="TableIcon" icon={faUserGroup} />         <p className="col-7"> Last Name</p></td>
                     <td>
                       {isEditing ? (
                         <input
@@ -209,8 +213,8 @@ export default function MyAccount() {
                       )}
                     </td>
                   </tr>
-                  <tr>
-                    <td>Phone:</td>
+                  <tr className="col-12">
+                    <td className="flexRSB"><FontAwesomeIcon className="TableIcon" icon={faSquarePhone} />  <p className="col-7">Phone</p></td>
                     <td>
                       {isEditing ? (
                         <input
@@ -224,8 +228,8 @@ export default function MyAccount() {
                       )}
                     </td>
                   </tr>
-                  <tr>
-                    <td>Country:</td>
+                  <tr className="col-12">
+                    <td className="flexRSB"> <FontAwesomeIcon className="TableIcon" icon={faEarthAmericas} />   <p className="col-7">Country</p></td>
                     <td>
                       {isEditing ? (
                         <input
@@ -239,19 +243,19 @@ export default function MyAccount() {
                       )}
                     </td>
                   </tr>
-                  <tr>
-                    <td>Total Sessions:</td>
+                  <tr className="col-12">
+                    <td className="flexRSB"><FontAwesomeIcon className="TableIcon" icon={faWallet} />        <p className="col-7">   Total Sessions</p></td>
                     <td>{user.totalSessions}</td>
                   </tr>
                 </tbody>
               </table>
               {isEditing ? (
-                <div className="col-10 flex">
-                  <button onClick={handleSave}>Save</button>
+                <div className="col-8 flex">
+                  <button className="btn" onClick={handleSave} ><FontAwesomeIcon className="TableIcon" icon={faFloppyDisk} /> Save</button>
                 </div>
               ) : (
-                <div className="col-10 flex">
-                  <button onClick={handleEdit}>Edit</button>
+                <div className="col-8 flex">
+                  <button className="btn" onClick={handleEdit}> <FontAwesomeIcon className="TableIcon" icon={faPenToSquare} />      Edit</button>
                 </div>
               )}
             </div>

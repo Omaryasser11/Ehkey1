@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import useAddBankInfo from "../../../hooks/account/useAddBankInfo";
 import useGetBankInfo from "../../../hooks/account/useGetBankInfo";
 import useUpdateBankInfo from "../../../hooks/account/useUpdateBankInfo";
-
+import "./CreditCardPage.scss"
+import {Swal} from "sweetalert2";
 const CreditCardForm = () => {
   const { addBankInfo, success, error } = useAddBankInfo();
   const { getBankInfo, code, setCode, data } = useGetBankInfo();
@@ -21,7 +22,7 @@ const CreditCardForm = () => {
     getBankInfo(token);
   }, []);
   useEffect(() => {
-    console.log("data", data);
+    // console.log("data", data);
     data && setState(data);
   }, [data]);
   const handleInputChange = (e) => {
@@ -38,18 +39,27 @@ const CreditCardForm = () => {
     e.preventDefault();
     if (code === 404) addBankInfo(state, token);
     else updateBankInfo(state, token);
-    setCode(200);
+    {
+      setCode(200);
+      Swal.fire({
+        title: "Sucess Jop!",
+        text: "Your Bank Info Updated Sucessfully",
+        icon: "success"
+      });
+    }
+
   };
 
   return (
     <div className="flex col-12">
-      <div className="mt-3 col-12">
+      <div className="mt-3  col-12">
         <form className="col-12" onSubmit={handleSubmitForm}>
-          <div className="mb-3">
+          <div className="mb-3 flexR">
+            <label className="col-2">Iban</label>
             <input
               type="text"
               name="iban"
-              className="form-control"
+              className="form-control col-10"
               placeholder="IBAN"
               value={state.iban}
               onChange={handleInputChange}
@@ -57,11 +67,13 @@ const CreditCardForm = () => {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 flexR">
+            <label className="col-2">Bank Name</label>
             <input
+
               type="text"
               name="bankName"
-              className="form-control"
+              className="form-control col-10"
               placeholder="Bank Name"
               value={state.bankName}
               onChange={handleInputChange}
@@ -69,11 +81,12 @@ const CreditCardForm = () => {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 flexR">
+            <label className="col-2">Full Name </label>
             <input
               type="text"
               name="fullName"
-              className="form-control"
+              className="form-control col-10"
               placeholder="Full Name"
               value={state.fullName}
               onChange={handleInputChange}
@@ -81,11 +94,12 @@ const CreditCardForm = () => {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 flexR">
+            <label className="col-2">Swift Code</label>
             <input
               type="text"
               name="swiftCode"
-              className="form-control"
+              className="form-control col-10"
               placeholder="Swift Code"
               value={state.swiftCode}
               onChange={handleInputChange}
@@ -94,7 +108,7 @@ const CreditCardForm = () => {
           </div>
 
           <div className="d-grid">
-            <button className="btn btn-dark">
+            <button className="btn">
               {code === 404 ? "Save" : "Update"}
             </button>
           </div>

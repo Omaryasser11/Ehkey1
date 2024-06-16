@@ -8,15 +8,13 @@ export default function section7Home() {
         <section className='section7 col-12'>
             <div className='Main34 col-10'>
                 <div className='col-6 Left2'>
-                    <img src={Home3} alt="" />
+                    <div className='Img'></div>
 
                 </div>
                 <div className='col-6 right1'>
                     <h1 className='hh'>Provide Better Life</h1>
-                    <p className='pp'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae aliquid ipsa sunt doloribus eum officiis ullam alias,
-                        quae elige
-                        recusandae!</p>
-                        <Link className='btn' to="AboutUs">Read More</Link>
+                    <p className='pp'>Join over 4,700,000 people who decided to get help and get happy with BetterHelp.</p>
+                    <Link className='btn' to="AboutUs">Start Now</Link>
 
                 </div>
             </div>

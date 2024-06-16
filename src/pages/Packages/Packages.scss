@@ -1,5 +1,5 @@
 .bookSession {
-    margin-top: 5rem;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +8,9 @@
     padding: 1rem;
     align-content: center;
     flex-wrap: nowrap;
+    padding: 2rem;
 }
+
 .bookSession .H2 {
     font-weight: 600;
 
@@ -27,6 +29,7 @@
     flex-wrap: nowrap;
     gap: 1rem;
 }
-.Bar{
-    gap:1rem
+
+.Bar {
+    gap: 1rem
 }

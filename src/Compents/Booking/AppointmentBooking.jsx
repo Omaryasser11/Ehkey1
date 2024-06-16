@@ -4,7 +4,7 @@ import useAvailableTimeSlots from "../../hooks/time-slots/useAvailableTimeSlots"
 import useBookASession from "../../hooks/sessions/useBookASession";
 import convertTo12HourFormat from "../../services/convertTo12HourFormat";
 import useUpdateSession from "../../hooks/sessions/useUpdateSession";
-
+import Swal from "sweetalert2";
 const AppointmentBooking = ({ id = null }) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedSlot, setSelectedSlot] = useState();
@@ -61,8 +61,19 @@ const AppointmentBooking = ({ id = null }) => {
     };
     if (id == null) {
       bookASession(data, token);
+      Swal.fire({
+        title: "Good job!",
+        text: `Your Session Date is  ${data.date}`,
+        icon: "success"
+      });
     } else {
+
       updateSession(id, data, token);
+      Swal.fire({
+        title: "Good job!",
+        text: `Your Session Date Updeted sucessfully in ${data.date} `,
+        icon: "success"
+      });
     }
     setSelectedDate("");
     setSelectedSlot(null);
@@ -139,6 +150,7 @@ const AppointmentBooking = ({ id = null }) => {
             className="P col-12 flex"
             style={{ fontSize: "12px", color: "green" }}
           >
+
             Session Booked Successfully
           </p>
         )}
