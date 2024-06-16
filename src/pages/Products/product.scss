@@ -20,10 +20,10 @@
     align-items: center;
     height: 15rem;
     border-radius: .6rem;
-    border: solid 2px linear-gradient( #d8f5e1, white);
+    border: solid 2px linear-gradient(#d8f5e1, white);
     width: 30%;
     padding: 1rem;
-    background-image: linear-gradient( #d8f5e1, white);
+    background-image: linear-gradient(#d8f5e1, white);
     box-shadow: #0000004a 0px 0px 8px .5px;
 }
 
@@ -31,8 +31,6 @@
     color: #25634Cff;
     font-weight: 600;
 }
-
-.btn2 {}
 
 .Add {
     /* height: 1.5rem; */
@@ -77,7 +75,15 @@
 }
 
 @media screen and (min-width: 100px) and (max-width: 780px) {
-    .product{
+    .product {
         width: 85%;
+    }
+
+    .Add {
+        height: 4.5rem;
+        background-color: #25634c;
+        border-radius: 0.6rem;
+        font-weight: 500;
+        width: 56%;
     }
 }

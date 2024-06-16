@@ -284,9 +284,10 @@
     .Mycart {
         width: 100%;
 
-        .cart-table {
-            width: 100%;
-        }
+    }
+
+    .Mycart .cart-table {
+        width: 95%;
     }
 
     .OrderSummary {

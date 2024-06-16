@@ -16,16 +16,18 @@
   h2 {
     text-align: center;
   }
-  h1, .H1 {
+
+  h1,
+  .H1 {
     font-weight: 600;
     font-size: 30px;
     color: #1b513d;
     text-align: center;
     font-family: "Exo 2", sans-serif;
     margin-bottom: 2rem;
-}a
+  }
 
-  .date-picker {
+  a .date-picker {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -157,6 +159,21 @@
 
 }
 
+
+.time-slots {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.appointment-booking-M ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
 @media screen and (min-width: 100px) and (max-width: 780px) {
   .mainL {
     width: 100%;
@@ -166,7 +183,26 @@
     width: 100%;
   }
 
-  .Add {
-    width: 50%;
+  .appointment-booking-L .flex .Add {
+    width: 95%;
   }
+
+  .maino {
+    width: 100%;
+  }
+
+  .time-slots {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .appointment-booking-M ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
 }
